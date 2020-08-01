@@ -2,7 +2,11 @@
 <resources>
 
     <!-- Spacing -->
+    <dimen name="space_xsmall">6dp</dimen>
 
     <!-- Font Size -->
+
+    <!-- Search View -->
+    <dimen name="search_view_search_fragment_margin">20dp</dimen>
 
 </resources>

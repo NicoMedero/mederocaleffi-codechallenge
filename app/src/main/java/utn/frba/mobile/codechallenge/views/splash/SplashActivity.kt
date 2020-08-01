@@ -13,7 +13,7 @@ class SplashActivity : AppCompatActivity() {
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.vBaseActivityContainer, SplashFragment.newInstance())
-                .commit()
+                .commitNow()
         }
     }
 }

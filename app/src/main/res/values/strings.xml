@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CodeChallenge</string>
+
+    <!-- Search View -->
+    <string name="search_icon">search icon</string>
+    <string name="search_view_query_hint">Buscá lo que quieras</string>
+
 </resources>
