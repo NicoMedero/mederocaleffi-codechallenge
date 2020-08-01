@@ -1,3 +1,6 @@
 package utn.frba.mobile.codechallenge.views.search
 
-interface SearchView
+interface SearchView {
+
+    fun showProgressBar()
+}

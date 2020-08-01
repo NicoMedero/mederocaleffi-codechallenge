@@ -6,7 +6,8 @@
 
     <!-- Font Size -->
 
-    <!-- Search View -->
-    <dimen name="search_view_search_fragment_margin">20dp</dimen>
+    <!-- Search Fragment -->
+    <dimen name="search_fragment_search_view_margin">24dp</dimen>
+    <dimen name="search_fragment_toolbar_height">56dp</dimen>
 
 </resources>
