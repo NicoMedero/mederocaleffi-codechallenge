@@ -4,5 +4,9 @@
     <!-- Search View -->
     <string name="search_icon">search icon</string>
     <string name="search_view_query_hint">Buscá lo que quieras</string>
+    <string name="search_view_failure_query_message">Ups! Algo salió mal, vuelve a intentarlo!</string>
+    <string name="search_view_empty_results_message">Lo sentimos, no encontramos lo que estás buscando.</string>
+    <string name="search_view_failure_get_more_items_message">Lo sentimos, no pudimos cargar más Items.</string>
+    <string name="search_view_no_more_items_to_show_message">No tenemos mas Ítems para mostrarte.</string>
 
 </resources>

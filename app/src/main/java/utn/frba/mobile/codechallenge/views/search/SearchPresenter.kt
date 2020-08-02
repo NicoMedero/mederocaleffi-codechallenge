@@ -11,13 +11,14 @@ class SearchPresenter(private val view: SearchView) {
 
     fun onQuerySubmit(query: String) {
         view.showProgressBar()
+        view.clearData()
         this.query = query
         repository.searchByName(query, null, { onSuccessQuery(it) }, { onFailureQuery() })
     }
 
     private fun onSuccessQuery(searchModel: SearchModel) {
         if (searchModel.results.isNullOrEmpty()) {
-            //TODO: display non results from query
+            view.emptyResultsFromQuery()
             return
         }
 
@@ -26,16 +27,17 @@ class SearchPresenter(private val view: SearchView) {
     }
 
     private fun onFailureQuery() {
-
+        view.stopProgressBar()
+        view.onFailureQuery()
     }
 
     fun getMoreItems(offset: Int) {
-        repository.searchByName(query!!, offset, { onSuccessGetMoreItems(it) }, {})
+        repository.searchByName(query!!, offset, { onSuccessGetMoreItems(it) }, { view.onFailureGettingMoreItems() })
     }
 
     private fun onSuccessGetMoreItems(searchModel: SearchModel) {
         if (searchModel.results.isNullOrEmpty()) {
-            //TODO: there is no more items :(
+            view.noMoreItemsToShow()
             return
         }
 

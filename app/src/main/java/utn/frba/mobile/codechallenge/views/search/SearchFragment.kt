@@ -1,10 +1,12 @@
 package utn.frba.mobile.codechallenge.views.search
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -69,8 +71,14 @@ class SearchFragment : Fragment(), SearchView {
         })
     }
 
+    override fun clearData() {
+        itemList.clear()
+        itemListAdapter.notifyDataSetChanged()
+    }
+
     override fun showProgressBar() {
         vProgressBarSearchFragment.visibility = View.VISIBLE
+        vFailureImageSearchFragment.visibility = View.GONE
     }
 
     override fun stopProgressBar() {
@@ -86,6 +94,30 @@ class SearchFragment : Fragment(), SearchView {
     override fun addItemsAtTheEnd(results: List<ItemList>) {
         itemList.addAll(itemList.lastIndex, results)
         itemListAdapter.notifyDataSetChanged()
+    }
+
+    override fun onFailureQuery() {
+        vFailureImageSearchFragment.visibility = View.VISIBLE
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            vFailureImageSearchFragment.setImageDrawable(requireContext().getDrawable(R.drawable.sad_emoji))
+        }
+        Toast.makeText(requireContext(), getString(R.string.search_view_failure_query_message), Toast.LENGTH_LONG).show()
+    }
+
+    override fun emptyResultsFromQuery() {
+        vFailureImageSearchFragment.visibility = View.VISIBLE
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            vFailureImageSearchFragment.setImageDrawable(requireContext().getDrawable(R.drawable.thinking_emoji))
+        }
+        Toast.makeText(requireContext(), getString(R.string.search_view_empty_results_message), Toast.LENGTH_LONG).show()
+    }
+
+    override fun onFailureGettingMoreItems() {
+        Toast.makeText(requireContext(), getString(R.string.search_view_failure_get_more_items_message), Toast.LENGTH_LONG).show()
+    }
+
+    override fun noMoreItemsToShow() {
+        Toast.makeText(requireContext(), getString(R.string.search_view_no_more_items_to_show_message), Toast.LENGTH_LONG).show()
     }
 
     companion object {

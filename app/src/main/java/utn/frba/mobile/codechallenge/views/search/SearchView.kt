@@ -11,4 +11,14 @@ interface SearchView {
     fun stopProgressBar()
 
     fun addItemsAtTheEnd(results: List<ItemList>)
+
+    fun clearData()
+
+    fun onFailureQuery()
+
+    fun emptyResultsFromQuery()
+
+    fun onFailureGettingMoreItems()
+
+    fun noMoreItemsToShow()
 }
