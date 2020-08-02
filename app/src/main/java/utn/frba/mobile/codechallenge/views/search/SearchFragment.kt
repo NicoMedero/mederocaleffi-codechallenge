@@ -79,6 +79,7 @@ class SearchFragment : Fragment(), SearchView {
     override fun showProgressBar() {
         vProgressBarSearchFragment.visibility = View.VISIBLE
         vFailureImageSearchFragment.visibility = View.GONE
+        vEmptyResultsImageSearchFragment.visibility = View.GONE
     }
 
     override fun stopProgressBar() {
@@ -98,17 +99,11 @@ class SearchFragment : Fragment(), SearchView {
 
     override fun onFailureQuery() {
         vFailureImageSearchFragment.visibility = View.VISIBLE
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            vFailureImageSearchFragment.setImageDrawable(requireContext().getDrawable(R.drawable.sad_emoji))
-        }
         Toast.makeText(requireContext(), getString(R.string.search_view_failure_query_message), Toast.LENGTH_LONG).show()
     }
 
     override fun emptyResultsFromQuery() {
-        vFailureImageSearchFragment.visibility = View.VISIBLE
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            vFailureImageSearchFragment.setImageDrawable(requireContext().getDrawable(R.drawable.thinking_emoji))
-        }
+        vEmptyResultsImageSearchFragment.visibility = View.VISIBLE
         Toast.makeText(requireContext(), getString(R.string.search_view_empty_results_message), Toast.LENGTH_LONG).show()
     }
 
