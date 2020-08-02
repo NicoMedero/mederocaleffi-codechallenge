@@ -24,11 +24,7 @@
                 android:id="@+id/vToolbarSearchFragment"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/search_fragment_toolbar_height"
-                android:background="@color/yellow"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/vRecyclerViewSearchFragment">
+                android:background="@color/yellow">
 
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/vSearchViewSearchFragment"
@@ -49,11 +45,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/vRecyclerViewSearchFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/vToolbarSearchFragment"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
