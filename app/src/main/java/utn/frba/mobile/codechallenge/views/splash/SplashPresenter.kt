@@ -9,7 +9,7 @@ class SplashPresenter(private val view: SplashView) {
     fun onViewCreated() {
         /*
             In this method we can make a call to the API
-            to load the searchView with some data.
+            to load SearchView with some data.
          */
         val handler = Handler()
         handler.postDelayed(

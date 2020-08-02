@@ -33,7 +33,7 @@ class DefaultSearchRepository : SearchRepository {
                 }
             }
             override fun onFailure(call: Call<SearchModel>, t: Throwable) {
-                return
+                onFailure.invoke()
             }
         })
     }
