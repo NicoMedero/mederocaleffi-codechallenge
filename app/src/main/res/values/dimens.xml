@@ -5,9 +5,17 @@
     <dimen name="space_xsmall">6dp</dimen>
 
     <!-- Font Size -->
+    <dimen name="item_list_description">16sp</dimen>
+    <dimen name="item_list_price">20sp</dimen>
 
     <!-- Search Fragment -->
     <dimen name="search_fragment_search_view_margin">24dp</dimen>
     <dimen name="search_fragment_toolbar_height">56dp</dimen>
+
+    <!-- Item List -->
+    <dimen name="item_list_like_width_height">30dp</dimen>
+    <dimen name="space_small">10dp</dimen>
+    <dimen name="item_list_image_margins">26dp</dimen>
+    <dimen name="item_list_image_size">100dp</dimen>
 
 </resources>

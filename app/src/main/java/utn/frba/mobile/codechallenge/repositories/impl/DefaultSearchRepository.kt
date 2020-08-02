@@ -1,5 +1,6 @@
 package utn.frba.mobile.codechallenge.repositories.impl
 
+import android.widget.Toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,7 +33,7 @@ class DefaultSearchRepository : SearchRepository {
                 }
             }
             override fun onFailure(call: Call<SearchModel>, t: Throwable) {
-                val model = SearchModel("failure")
+                return
             }
         })
     }
