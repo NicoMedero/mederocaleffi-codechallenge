@@ -9,6 +9,8 @@ interface SearchService {
 
     @GET("search")
     fun getItemsListByQuery(
-        @Query("q") q: String
+        @Query("q") q: String,
+        @Query("offset") offset: Int?,
+        @Query("limit") limit: Int?
     ): Call<SearchModel>
 }

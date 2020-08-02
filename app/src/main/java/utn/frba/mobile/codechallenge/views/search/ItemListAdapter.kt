@@ -1,11 +1,9 @@
 package utn.frba.mobile.codechallenge.views.search
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list_layout.view.*
 import utn.frba.mobile.codechallenge.R
@@ -36,8 +34,8 @@ class ItemListAdapter(private val results: List<ItemList>) : RecyclerView.Adapte
             viewHolder.run {
                 Picasso.get()
                     .load(itemList.thumbnail)
-                    .placeholder(R.mipmap.ic_launcher)
-                    .error(R.mipmap.ic_launcher)
+                    .placeholder(R.drawable.item_image_placeholder)
+                    .error(R.drawable.item_image_placeholder)
                     .into(vItemListImage)
                 vItemListDescription.text = itemList.title
                 vItemListPrice.text = getPrice(itemList.price)

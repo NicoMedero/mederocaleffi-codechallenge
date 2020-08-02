@@ -10,7 +10,7 @@ class SearchPresenter(private val view: SearchView) {
 
     fun onQuerySubmit(query: String) {
         view.showProgressBar()
-        repository.searchByName(query, { onSuccessQuery(it) }, { onFailureQuery() })
+        repository.searchByName(query, null, null, { onSuccessQuery(it) }, { onFailureQuery() })
     }
 
     private fun onSuccessQuery(searchModel: SearchModel) {

@@ -3,6 +3,7 @@
 
     <!-- Spacing -->
     <dimen name="space_xsmall">6dp</dimen>
+    <dimen name="space_small">10dp</dimen>
 
     <!-- Font Size -->
     <dimen name="item_list_description">16sp</dimen>
@@ -13,8 +14,7 @@
     <dimen name="search_fragment_toolbar_height">56dp</dimen>
 
     <!-- Item List -->
-    <dimen name="item_list_like_width_height">30dp</dimen>
-    <dimen name="space_small">10dp</dimen>
+    <dimen name="item_list_like_width_height">20dp</dimen>
     <dimen name="item_list_image_margins">26dp</dimen>
     <dimen name="item_list_image_size">100dp</dimen>
 
