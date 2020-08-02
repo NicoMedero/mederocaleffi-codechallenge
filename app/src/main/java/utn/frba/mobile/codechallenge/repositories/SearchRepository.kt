@@ -7,7 +7,6 @@ interface SearchRepository {
     fun searchByName(
         query: String,
         offset: Int?,
-        limit: Int?,
         onSuccess: (SearchModel) -> Unit?,
         onFailure: () -> Unit?)
 }

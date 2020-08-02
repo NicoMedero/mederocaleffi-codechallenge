@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.search_fragment.*
 import utn.frba.mobile.codechallenge.R
 import utn.frba.mobile.codechallenge.models.ItemList
@@ -39,6 +40,17 @@ class SearchFragment : Fragment(), SearchView {
         vRecyclerViewSearchFragment.apply {
             this.layoutManager = itemListLayoutManager
             adapter = itemListAdapter
+            addOnScrollListener(object: RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    val totalItems = layoutManager?.itemCount
+                    val lastItem = itemListLayoutManager.findLastVisibleItemPosition()
+
+                    if (lastItem + 1 == totalItems) {
+                        presenter.getMoreItems(totalItems)
+                    }
+                }
+            })
         }
 
         vSearchViewSearchFragment.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener {
@@ -68,6 +80,11 @@ class SearchFragment : Fragment(), SearchView {
     override fun loadQueryResults(results: List<ItemList>) {
         itemList.clear()
         itemList.addAll(results)
+        itemListAdapter.notifyDataSetChanged()
+    }
+
+    override fun addItemsAtTheEnd(results: List<ItemList>) {
+        itemList.addAll(itemList.lastIndex, results)
         itemListAdapter.notifyDataSetChanged()
     }
 

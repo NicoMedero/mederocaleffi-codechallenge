@@ -9,9 +9,11 @@ class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.base_activity)
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.vBaseActivityContainer, SearchFragment.newInstance())
-            .commit()
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.vBaseActivityContainer, SearchFragment.newInstance())
+                .commit()
+        }
     }
 }

@@ -19,12 +19,11 @@ class DefaultSearchRepository : SearchRepository {
     override fun searchByName(
         query: String,
         offset: Int?,
-        limit: Int?,
         onSuccess: (SearchModel) -> Unit?,
         onFailure: () -> Unit?
     ) {
         val service = retrofit.create(SearchService::class.java)
-        val call = service.getItemsListByQuery(query, offset, limit)
+        val call = service.getItemsListByQuery(query, offset)
 
         call.enqueue(object: Callback<SearchModel>{
             override fun onResponse(call: Call<SearchModel>, response: Response<SearchModel>) {

@@ -9,4 +9,6 @@ interface SearchView {
     fun loadQueryResults(results: List<ItemList>)
 
     fun stopProgressBar()
+
+    fun addItemsAtTheEnd(results: List<ItemList>)
 }
