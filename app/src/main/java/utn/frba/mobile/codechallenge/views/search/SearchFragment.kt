@@ -69,6 +69,17 @@ class SearchFragment : Fragment(), SearchView {
             }
 
         })
+
+        if (savedInstanceState != null) {
+            val savedItemList: List<ItemList> = savedInstanceState.getSerializable(ITEMS_LIST_KEY) as List<ItemList>
+            itemList.addAll(savedItemList)
+            itemListAdapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable(ITEMS_LIST_KEY, itemList)
     }
 
     override fun clearData() {
@@ -117,5 +128,6 @@ class SearchFragment : Fragment(), SearchView {
 
     companion object {
         fun newInstance() = SearchFragment()
+        private const val ITEMS_LIST_KEY = "item_list"
     }
 }
