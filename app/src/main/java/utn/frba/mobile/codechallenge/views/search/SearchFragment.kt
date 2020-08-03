@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.search_fragment.*
 import utn.frba.mobile.codechallenge.R
 import utn.frba.mobile.codechallenge.models.ItemList
+import java.io.Serializable
 
 class SearchFragment : Fragment(), SearchView {
 
@@ -48,7 +49,7 @@ class SearchFragment : Fragment(), SearchView {
                     val lastItem = itemListLayoutManager.findLastVisibleItemPosition()
 
                     if (lastItem + 1 == totalItems) {
-                        presenter.getMoreItems(totalItems)
+                        presenter.getMoreItems(totalItems, vSearchViewSearchFragment.query.toString())
                     }
                 }
             })

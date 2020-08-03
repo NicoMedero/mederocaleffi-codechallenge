@@ -7,12 +7,10 @@ import utn.frba.mobile.codechallenge.repositories.impl.DefaultSearchRepository
 class SearchPresenter(private val view: SearchView) {
 
     private val repository: SearchRepository = DefaultSearchRepository()
-    private var query: String? = null
 
     fun onQuerySubmit(query: String) {
         view.showProgressBar()
         view.clearData()
-        this.query = query
         repository.searchByName(query, null, { onSuccessQuery(it) }, { onFailureQuery() })
     }
 
@@ -31,8 +29,8 @@ class SearchPresenter(private val view: SearchView) {
         view.onFailureQuery()
     }
 
-    fun getMoreItems(offset: Int) {
-        repository.searchByName(query!!, offset, { onSuccessGetMoreItems(it) }, { view.onFailureGettingMoreItems() })
+    fun getMoreItems(offset: Int, query: String) {
+        repository.searchByName(query, offset, { onSuccessGetMoreItems(it) }, { view.onFailureGettingMoreItems() })
     }
 
     private fun onSuccessGetMoreItems(searchModel: SearchModel) {
