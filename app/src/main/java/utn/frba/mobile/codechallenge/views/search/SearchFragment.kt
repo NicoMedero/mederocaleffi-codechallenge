@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.search_fragment.*
 import utn.frba.mobile.codechallenge.R
 import utn.frba.mobile.codechallenge.models.ItemList
-import java.io.Serializable
 
 class SearchFragment : Fragment(), SearchView {
 
@@ -123,7 +122,7 @@ class SearchFragment : Fragment(), SearchView {
     }
 
     override fun noMoreItemsToShow() {
-        Toast.makeText(requireContext(), getString(R.string.search_view_no_more_items_to_show_message), Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), getString(R.string.search_view_no_more_items_to_show_message), Toast.LENGTH_SHORT).show()
     }
 
     companion object {
