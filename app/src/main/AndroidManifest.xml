@@ -23,6 +23,8 @@
         <activity
             android:name=".views.search.SearchActivity"
             android:windowSoftInputMode="adjustPan"/>
+
+        <activity android:name=".views.detail.DetailItemActivity"/>
     </application>
 
 </manifest>
