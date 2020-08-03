@@ -11,7 +11,7 @@
 
     <!-- Search Fragment -->
     <dimen name="search_fragment_search_view_margin">24dp</dimen>
-    <dimen name="search_fragment_toolbar_height">56dp</dimen>
+    <dimen name="search_fragment_toolbar_height">48dp</dimen>
 
     <!-- Item List -->
     <dimen name="item_list_like_width_height">20dp</dimen>

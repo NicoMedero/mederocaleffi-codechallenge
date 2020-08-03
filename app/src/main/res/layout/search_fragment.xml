@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
+    android:focusableInTouchMode="true"
+    android:descendantFocusability="beforeDescendants"
     android:background="@drawable/search_fragment_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -34,8 +36,6 @@
                     android:layout_marginEnd="@dimen/search_fragment_search_view_margin"
                     android:layout_marginTop="@dimen/space_xsmall"
                     android:layout_marginBottom="@dimen/space_xsmall"
-                    android:clickable="true"
-                    android:focusable="true"
                     app:iconifiedByDefault="false"
                     app:queryHint="@string/search_view_query_hint"
                     android:background="@drawable/search_view_background"/>
