@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/vLikeButtonDetailFragment"
+        android:icon="@drawable/like_selected_state_detail_fragment"
+        android:checkable="true"
+        android:title="action like"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/vSearchButtonDetailFragment"
+        android:icon="@drawable/ic_search"
+        android:title="action search"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+</menu>

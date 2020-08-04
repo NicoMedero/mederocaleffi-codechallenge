@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/vCustomToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/vSearchViewCustomToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/custom_toolbar_search_view_height"
+            android:layout_marginStart="@dimen/custom_toolbar_search_view_margin"
+            android:layout_marginEnd="@dimen/custom_toolbar_search_view_margin"
+            android:layout_marginTop="@dimen/space_xsmall"
+            android:layout_marginBottom="@dimen/space_xsmall"
+            android:visibility="gone"
+            android:background="@drawable/custom_toolbar_search_view_background"
+            app:iconifiedByDefault="false"
+            app:queryHint="@string/custom_toolbar_search_view_query_hint"
+            tool:visibility="visible"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

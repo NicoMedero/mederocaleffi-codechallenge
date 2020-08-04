@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
+    <utn.frba.mobile.codechallenge.views.customViews.impl.CustomToolbar
         android:id="@+id/vToolbarSearchFragment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/search_fragment_toolbar_height"
@@ -17,21 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/vScrollViewSearchFragment">
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/vSearchViewSearchFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/search_fragment_search_view_margin"
-            android:layout_marginEnd="@dimen/search_fragment_search_view_margin"
-            android:layout_marginTop="@dimen/space_xsmall"
-            android:layout_marginBottom="@dimen/space_xsmall"
-            app:iconifiedByDefault="false"
-            app:queryHint="@string/search_view_query_hint"
-            android:background="@drawable/search_view_background"/>
-
-    </androidx.appcompat.widget.Toolbar>
+        app:layout_constraintBottom_toTopOf="@id/vScrollViewSearchFragment"/>
 
     <ScrollView
         android:id="@+id/vScrollViewSearchFragment"

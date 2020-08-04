@@ -9,8 +9,11 @@
     <dimen name="item_list_description">16sp</dimen>
     <dimen name="item_list_price">20sp</dimen>
 
+    <!-- Custom Toolbar -->
+    <dimen name="custom_toolbar_search_view_margin">24dp</dimen>
+    <dimen name="custom_toolbar_search_view_height">36dp</dimen>
+
     <!-- Search Fragment -->
-    <dimen name="search_fragment_search_view_margin">24dp</dimen>
     <dimen name="search_fragment_toolbar_height">48dp</dimen>
 
     <!-- Item List -->

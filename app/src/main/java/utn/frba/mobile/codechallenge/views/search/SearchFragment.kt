@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.search_fragment.*
 import utn.frba.mobile.codechallenge.R
 import utn.frba.mobile.codechallenge.models.ItemList
+import utn.frba.mobile.codechallenge.views.customViews.CustomToolbarInterface
 
-class SearchFragment : Fragment(), SearchView {
+class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
 
     private lateinit var presenter: SearchPresenter
     private var itemList = ArrayList<ItemList>()
@@ -35,6 +36,8 @@ class SearchFragment : Fragment(), SearchView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        vToolbarSearchFragment.initWithSearchView(this)
+
         itemListAdapter = ItemListAdapter(itemList)
         itemListLayoutManager = LinearLayoutManager(requireContext())
 
@@ -48,32 +51,21 @@ class SearchFragment : Fragment(), SearchView {
                     val lastItem = itemListLayoutManager.findLastVisibleItemPosition()
 
                     if (lastItem + 1 == totalItems) {
-                        presenter.getMoreItems(totalItems, vSearchViewSearchFragment.query.toString())
+                        presenter.getMoreItems(totalItems, vToolbarSearchFragment.getQueryFromSearchView())
                     }
                 }
             })
         }
-
-        vSearchViewSearchFragment.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                vSearchViewSearchFragment.clearFocus()
-                if (!query.isNullOrEmpty()){
-                    presenter.onQuerySubmit(query)
-                }
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-
-        })
 
         if (savedInstanceState != null) {
             val savedItemList: List<ItemList> = savedInstanceState.getSerializable(ITEMS_LIST_KEY) as List<ItemList>
             itemList.addAll(savedItemList)
             itemListAdapter.notifyDataSetChanged()
         }
+    }
+
+    override fun queryTextSubmitted(query: String) {
+        presenter.onQuerySubmit(query)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -123,6 +115,14 @@ class SearchFragment : Fragment(), SearchView {
 
     override fun noMoreItemsToShow() {
         Toast.makeText(requireContext(), getString(R.string.search_view_no_more_items_to_show_message), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun unlikeItem() {
+        //Do nothing
+    }
+
+    override fun likeItem() {
+        //Do nothing
     }
 
     companion object {
