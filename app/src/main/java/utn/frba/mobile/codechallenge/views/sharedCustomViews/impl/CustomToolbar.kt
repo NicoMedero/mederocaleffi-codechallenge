@@ -1,4 +1,4 @@
-package utn.frba.mobile.codechallenge.views.customViews.impl
+package utn.frba.mobile.codechallenge.views.sharedCustomViews.impl
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,7 +7,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.constraintlayout.widget.ConstraintLayout
 import kotlinx.android.synthetic.main.custom_toolbar.view.*
 import utn.frba.mobile.codechallenge.R
-import utn.frba.mobile.codechallenge.views.customViews.CustomToolbarInterface
+import utn.frba.mobile.codechallenge.views.sharedCustomViews.CustomToolbarInterface
 
 class CustomToolbar @JvmOverloads constructor(
     context: Context,

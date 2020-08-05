@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <utn.frba.mobile.codechallenge.views.customViews.impl.CustomToolbar
+    <utn.frba.mobile.codechallenge.views.sharedCustomViews.impl.CustomToolbar
         android:id="@+id/vToolbarSearchFragment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/search_fragment_toolbar_height"

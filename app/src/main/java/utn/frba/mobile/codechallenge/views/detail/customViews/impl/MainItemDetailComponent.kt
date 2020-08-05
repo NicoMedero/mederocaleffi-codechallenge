@@ -1,4 +1,4 @@
-package utn.frba.mobile.codechallenge.views.customViews.impl
+package utn.frba.mobile.codechallenge.views.detail.customViews.impl
 
 import android.content.Context
 import android.content.Intent

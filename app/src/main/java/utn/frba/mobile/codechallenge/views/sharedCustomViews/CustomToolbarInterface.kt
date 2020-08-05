@@ -1,4 +1,4 @@
-package utn.frba.mobile.codechallenge.views.customViews
+package utn.frba.mobile.codechallenge.views.sharedCustomViews
 
 interface CustomToolbarInterface {
     fun unlikeItem()

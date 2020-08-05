@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.detail_fragment.*
 import utn.frba.mobile.codechallenge.R
 import utn.frba.mobile.codechallenge.models.DetailItem
 import utn.frba.mobile.codechallenge.models.ItemList
-import utn.frba.mobile.codechallenge.views.customViews.CustomToolbarInterface
+import utn.frba.mobile.codechallenge.views.sharedCustomViews.CustomToolbarInterface
 import utn.frba.mobile.codechallenge.views.detail.DetailItemActivity.Companion.ITEM_LIST_DATA
 
 class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {

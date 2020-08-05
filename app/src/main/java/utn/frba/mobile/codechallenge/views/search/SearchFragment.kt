@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.search_fragment.*
 import utn.frba.mobile.codechallenge.R
 import utn.frba.mobile.codechallenge.models.ItemList
-import utn.frba.mobile.codechallenge.views.customViews.CustomToolbarInterface
+import utn.frba.mobile.codechallenge.views.sharedCustomViews.CustomToolbarInterface
 
 class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
 
