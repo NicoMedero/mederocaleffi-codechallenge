@@ -22,14 +22,14 @@
             android:id="@+id/vConditionMainItemDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/medium_gray"
+            android:textColor="@color/gray"
             tools:text="Nuevo | "/>
 
         <TextView
             android:id="@+id/vItemSoldQuantityMainItemDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/medium_gray"
+            android:textColor="@color/gray"
             tools:text="1386 vendidos"/>
 
     </LinearLayout>
@@ -49,14 +49,34 @@
         android:id="@+id/vCarouselMainItemDetail"
         android:layout_width="match_parent"
         android:layout_height="360dp"
-        android:layout_marginTop="@dimen/space_xsmall"
+        android:layout_marginTop="@dimen/space_smaller"
         app:fillColor="@color/white"
         app:pageColor="@color/white"
         app:autoPlay="false"
         app:indicatorVisibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vItemTitleMainItemDetail"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+    </com.synnapps.carouselview.CarouselView>
+
+    <TextView
+        android:id="@+id/vImageCountMainItemDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_medium"
+        android:layout_marginStart="@dimen/space_medium"
+        android:layout_marginLeft="@dimen/space_medium"
+        android:paddingStart="@dimen/space_small"
+        android:paddingEnd="@dimen/space_small"
+        android:paddingTop="@dimen/space_smallest"
+        android:paddingBottom="@dimen/space_smallest"
+        android:background="@drawable/image_count_background_main_item_detail"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/vCarouselMainItemDetail"
+        app:layout_constraintTop_toTopOf="@id/vCarouselMainItemDetail"
+        tools:text="3 / 10" />
 
     <Button
         android:id="@+id/vShareButtonMainItemDetail"
@@ -73,7 +93,7 @@
         android:id="@+id/vItemPriceMainItemDetail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_xsmall"
+        android:layout_marginTop="@dimen/space_smaller"
         style="@style/ItemDetailPrice"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vCarouselMainItemDetail"
@@ -85,7 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:layout_marginTop="@dimen/space_xsmall"
+        android:layout_marginTop="@dimen/space_smaller"
         android:background="@drawable/main_item_detail_normal_shipping"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"

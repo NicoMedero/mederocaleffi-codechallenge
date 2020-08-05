@@ -2,8 +2,12 @@
 <resources>
 
     <!-- Spacing -->
-    <dimen name="space_xsmall">6dp</dimen>
+    <dimen name="space_smallest">4dp</dimen>
+    <dimen name="space_smaller">6dp</dimen>
     <dimen name="space_small">10dp</dimen>
+    <dimen name="space_medium_smaller">12dp</dimen>
+    <dimen name="space_medium_small">14dp</dimen>
+    <dimen name="space_medium">16dp</dimen>
 
     <!-- Font Size -->
     <dimen name="item_list_description">16sp</dimen>
@@ -22,5 +26,6 @@
     <dimen name="item_list_image_size">100dp</dimen>
     <dimen name="main_item_detail_share_width_height">40dp</dimen>
     <dimen name="main_item_detail_share_margins">30dp</dimen>
+
 
 </resources>

@@ -3,9 +3,11 @@ package utn.frba.mobile.codechallenge.views.detail.customViews.impl
 import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.viewpager.widget.ViewPager
 import com.squareup.picasso.Picasso
 import com.synnapps.carouselview.ImageListener
 import kotlinx.android.synthetic.main.main_item_detail_fragment.view.*
@@ -39,6 +41,7 @@ class MainItemDetailComponent @JvmOverloads constructor(
             vItemPriceMainItemDetail.text = getItemPrice(this.price)
             vItemSoldQuantityMainItemDetail.text = getSoldQuantity(this.soldQuantity)
             vCarouselMainItemDetail.setImageListener(setCarouselImageListener(this.pictures))
+            vCarouselMainItemDetail.addOnPageChangeListener(setOnChangeListener(this.pictures.size))
             vCarouselMainItemDetail.pageCount = detailItem.pictures.size
         }
 
@@ -52,6 +55,27 @@ class MainItemDetailComponent @JvmOverloads constructor(
                 .placeholder(R.drawable.item_image_placeholder)
                 .error(R.drawable.item_image_placeholder)
                 .into(imageView)
+        }
+    }
+
+    private fun setOnChangeListener(picturesListSize: Int): ViewPager.OnPageChangeListener {
+        return object: ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) {
+                //Do nothing
+            }
+
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                vImageCountMainItemDetail.text = String.format(IMAGE_COUNT, position+1, picturesListSize)
+            }
+
+            override fun onPageSelected(position: Int) {
+                //Do nothing
+            }
+
         }
     }
 
@@ -83,5 +107,9 @@ class MainItemDetailComponent @JvmOverloads constructor(
             sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
             context.startActivity(Intent.createChooser(sharingIntent, "Compartir a través de:"))
         }
+    }
+
+    companion object {
+        private const val IMAGE_COUNT = "%s / %d"
     }
 }
