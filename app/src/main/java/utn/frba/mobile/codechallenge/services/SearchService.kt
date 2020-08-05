@@ -7,7 +7,7 @@ import utn.frba.mobile.codechallenge.models.SearchModel
 
 interface SearchService {
 
-    @GET("search")
+    @GET("sites/MLA/search")
     fun getItemsListByQuery(
         @Query("q") q: String,
         @Query("offset") offset: Int?

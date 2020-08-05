@@ -3,18 +3,11 @@ package utn.frba.mobile.codechallenge.repositories.impl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import utn.frba.mobile.codechallenge.models.SearchModel
 import utn.frba.mobile.codechallenge.repositories.SearchRepository
 import utn.frba.mobile.codechallenge.services.SearchService
 
-class DefaultSearchRepository : SearchRepository {
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+class DefaultSearchRepository : BaseRepository(), SearchRepository {
 
     override fun searchByName(
         query: String,
@@ -36,10 +29,5 @@ class DefaultSearchRepository : SearchRepository {
                 onFailure.invoke()
             }
         })
-    }
-
-    companion object{
-        private const val BASE_URL = "https://api.mercadolibre.com/sites/MLA/"
-        private const val OK_HTTP = 200
     }
 }

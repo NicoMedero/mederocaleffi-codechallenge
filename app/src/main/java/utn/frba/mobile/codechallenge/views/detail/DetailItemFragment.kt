@@ -50,6 +50,14 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         return null
     }
 
+    override fun setLikeStatus() {
+        vToolbarDetailFragment.setLikeStatus()
+    }
+
+    override fun stopProgressBar() {
+        vProgressBarDetailItemFragment.visibility = View.GONE
+    }
+
     companion object {
         fun newInstance(itemList: ItemList?): DetailItemFragment {
             val detailItemFragment = DetailItemFragment()

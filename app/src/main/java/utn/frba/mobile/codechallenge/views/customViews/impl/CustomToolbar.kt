@@ -74,4 +74,12 @@ class CustomToolbar @JvmOverloads constructor(
             }
         }
     }
+
+    fun setLikeStatus() {
+        val likeButton = vCustomToolbar.menu.findItem(R.id.vLikeButtonDetailFragment)
+        likeButton.apply {
+            this.isChecked = true
+            this.setIcon(R.drawable.ic_like_black)
+        }
+    }
 }
