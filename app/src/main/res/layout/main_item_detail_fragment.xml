@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:id="@+id/vLinearLayoutConditionAndSoldMainItemDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/vItemTitleMainItemDetail">
+
+        <TextView
+            android:id="@+id/vConditionMainItemDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/medium_gray"
+            tools:text="Nuevo | "/>
+
+        <TextView
+            android:id="@+id/vItemSoldQuantityMainItemDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/medium_gray"
+            tools:text="1386 vendidos"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/vItemTitleMainItemDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/ItemDetailTitle"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vLinearLayoutConditionAndSoldMainItemDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Kit Arduino Uno R3 Principiantes 1ra Calidad Rfid Completo"/>
+
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/vCarouselMainItemDetail"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginTop="@dimen/space_xsmall"
+        app:fillColor="@color/white"
+        app:pageColor="@color/white"
+        app:autoPlay="false"
+        app:indicatorVisibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vItemTitleMainItemDetail"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/vShareButtonMainItemDetail"
+        android:layout_width="@dimen/main_item_detail_share_width_height"
+        android:layout_height="@dimen/main_item_detail_share_width_height"
+        android:layout_marginEnd="@dimen/main_item_detail_share_margins"
+        android:layout_marginRight="@dimen/main_item_detail_share_margins"
+        android:layout_marginBottom="@dimen/main_item_detail_share_margins"
+        android:background="@drawable/share"
+        app:layout_constraintEnd_toEndOf="@id/vCarouselMainItemDetail"
+        app:layout_constraintBottom_toBottomOf="@id/vCarouselMainItemDetail" />
+
+    <TextView
+        android:id="@+id/vItemPriceMainItemDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_xsmall"
+        style="@style/ItemDetailPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vCarouselMainItemDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="$ 5.999.99"/>
+
+    <TextView
+        android:id="@+id/vNormalShippingItemMainItemDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:layout_marginTop="@dimen/space_xsmall"
+        android:background="@drawable/main_item_detail_normal_shipping"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vItemPriceMainItemDetail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/main_item_detail_normal_shipping"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

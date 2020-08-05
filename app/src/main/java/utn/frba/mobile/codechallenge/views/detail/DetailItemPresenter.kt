@@ -30,9 +30,7 @@ class DetailItemPresenter(private val view: DetailItemView) {
 
     private fun onSuccess(detailItem: DetailItem) {
         view.stopProgressBar()
-        detailItem.run {
-
-        }
+        view.setMainItemDetails(detailItem)
     }
 
     private fun onFailure() {

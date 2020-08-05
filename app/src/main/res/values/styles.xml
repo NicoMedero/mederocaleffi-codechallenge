@@ -19,4 +19,16 @@
         <item name="android:maxLines">1</item>
     </style>
 
+    <style name="ItemDetailTitle">
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ItemDetailPrice">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

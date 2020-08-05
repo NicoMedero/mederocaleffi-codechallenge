@@ -20,5 +20,7 @@
     <dimen name="item_list_like_width_height">22dp</dimen>
     <dimen name="item_list_image_margins">26dp</dimen>
     <dimen name="item_list_image_size">100dp</dimen>
+    <dimen name="main_item_detail_share_width_height">40dp</dimen>
+    <dimen name="main_item_detail_share_margins">30dp</dimen>
 
 </resources>
