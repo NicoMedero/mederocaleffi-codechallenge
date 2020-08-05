@@ -7,7 +7,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.detail_fragment.*
 import utn.frba.mobile.codechallenge.R
+import utn.frba.mobile.codechallenge.models.ItemList
 import utn.frba.mobile.codechallenge.views.customViews.CustomToolbarInterface
+import utn.frba.mobile.codechallenge.views.detail.DetailItemActivity.Companion.ITEM_LIST_DATA
 
 class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
 
@@ -27,6 +29,8 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         vToolbarDetailFragment.initWithLikeAndSearchButton(this)
+
+        presenter.setItemData(arguments?.getSerializable(ITEM_LIST_DATA) as ItemList)
     }
 
     override fun unlikeItem() {
@@ -41,7 +45,18 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         Toast.makeText(context, "Query: $query", Toast.LENGTH_SHORT).show()
     }
 
+    override fun getIdIfItemWasLiked(): Int? {
+        //TODO: presenter.getId()
+        return null
+    }
+
     companion object {
-        fun newInstance() = DetailItemFragment()
+        fun newInstance(itemList: ItemList?): DetailItemFragment {
+            val detailItemFragment = DetailItemFragment()
+            val args = Bundle(1)
+            args.putSerializable(ITEM_LIST_DATA, itemList)
+            detailItemFragment.arguments = args
+            return detailItemFragment
+        }
     }
 }

@@ -49,9 +49,6 @@
         android:id="@+id/vItemListLikeButton"
         android:layout_width="@dimen/item_list_like_width_height"
         android:layout_height="@dimen/item_list_like_width_height"
-        android:layout_marginTop="@dimen/space_xsmall"
-        android:layout_marginRight="@dimen/space_xsmall"
-        android:layout_marginEnd="@dimen/space_xsmall"
         android:clickable="true"
         android:focusable="true"
         android:textOff=""
@@ -59,7 +56,8 @@
         android:background="@drawable/like_selected_state"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/vItemListDescription"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/vItemListDescription"/>
 
     <ImageView
         android:layout_width="match_parent"
