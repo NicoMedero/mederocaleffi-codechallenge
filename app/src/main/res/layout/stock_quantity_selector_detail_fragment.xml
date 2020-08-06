@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/stock_selector_detail_item_background"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/buttons_height"
+    android:paddingStart="@dimen/space_large_smaller"
+    android:paddingEnd="@dimen/space_large_smaller">
+
+    <TextView
+        android:id="@+id/vStockQuantityTitleDetailFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:text="@string/detail_fragment_stock_quantity_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/vStockQuantitySelectedDetailFragment"
+        tools:text="Cantidad: "/>
+
+    <TextView
+        android:id="@+id/vStockQuantitySelectedDetailFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/vStockQuantityTitleDetailFragment"
+        app:layout_constraintTop_toTopOf="@id/vStockQuantityTitleDetailFragment"
+        app:layout_constraintBottom_toBottomOf="@id/vStockQuantityTitleDetailFragment"
+        app:layout_constraintEnd_toStartOf="@+id/vStockAvailableQuantityDetailFragment"
+        tools:text="1"/>
+
+    <TextView
+        android:id="@+id/vStockAvailableQuantityDetailFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/medium_gray"
+        android:layout_marginStart="@dimen/space_medium"
+        android:layout_marginLeft="@dimen/space_medium"
+        app:layout_constraintStart_toEndOf="@+id/vStockQuantitySelectedDetailFragment"
+        app:layout_constraintTop_toTopOf="@+id/vStockQuantitySelectedDetailFragment"
+        app:layout_constraintBottom_toBottomOf="@+id/vStockQuantitySelectedDetailFragment"
+        app:layout_constraintEnd_toStartOf="@+id/vStockQuantityChevronDetailFragment"
+        tools:text="(99999 disponibles)"/>
+
+    <ImageView
+        android:id="@+id/vStockQuantityChevronDetailFragment"
+        android:src="@drawable/chevron_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/vStockAvailableQuantityDetailFragment"
+        app:layout_constraintTop_toTopOf="@id/vStockQuantityTitleDetailFragment"
+        app:layout_constraintBottom_toBottomOf="@id/vStockQuantityTitleDetailFragment"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

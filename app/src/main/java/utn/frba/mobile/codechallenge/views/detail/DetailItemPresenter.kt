@@ -32,14 +32,21 @@ class DetailItemPresenter(private val view: DetailItemView) {
     private fun onSuccess(detailItem: DetailItem) {
         view.stopProgressBar()
         view.setMainItemDetails(detailItem)
+        if (detailItem.availableQuantity == 0) {
+            view.showUnavailableStock()
+        } else {
+            view.setAvailableStock(detailItem.availableQuantity)
+        }
     }
 
     private fun onSuccess(seller: Seller) {
         if (seller.nickname.isNotEmpty()) {
             view.setSellerName(seller.nickname)
         }
-        if (seller.reputation.sellerStatus.isNotEmpty()) {
+        if (!seller.reputation.sellerStatus.isNullOrEmpty()) {
             view.setSellerReputationAndQuantitySold(seller.reputation.sellerStatus, seller.reputation.transactions.completed)
+        } else {
+            view.setSellerWithoutReputation()
         }
     }
 
@@ -61,5 +68,9 @@ class DetailItemPresenter(private val view: DetailItemView) {
 
     fun onShareButtonClicked() {
         view.showShareBottomSheet()
+    }
+
+    fun onStockSelectorClicked() {
+        //
     }
 }

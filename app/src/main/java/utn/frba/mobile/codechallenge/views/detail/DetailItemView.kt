@@ -27,4 +27,10 @@ interface DetailItemView {
 
     fun showGetSellerInfoError()
 
+    fun showUnavailableStock()
+
+    fun setAvailableStock(availableQuantity: Int)
+
+    fun setSellerWithoutReputation()
+
 }

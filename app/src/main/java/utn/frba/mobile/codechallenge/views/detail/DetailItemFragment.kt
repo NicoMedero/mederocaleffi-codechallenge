@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.detail_fragment.*
 import kotlinx.android.synthetic.main.like_and_share_detail_fragment.*
+import kotlinx.android.synthetic.main.stock_quantity_selector_detail_fragment.*
 import utn.frba.mobile.codechallenge.R
 import utn.frba.mobile.codechallenge.models.DetailItem
 import utn.frba.mobile.codechallenge.models.ItemList
@@ -39,8 +40,16 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
                 presenter.onLikeButtonClicked(vLikeButtonWithShareDetailFragment.isChecked)
             }
         }
+        vLikeButtonWithShareDetailFragment.apply {
+            setOnClickListener {
+                presenter.onLikeButtonClicked(this.isChecked)
+            }
+        }
         vShareButtonContainerDetailFragment.setOnClickListener {
             presenter.onShareButtonClicked()
+        }
+        vStockQuantitySelectorDetailFragment.setOnClickListener {
+            presenter.onStockSelectorClicked()
         }
         vTextForLikeButonWithShareDetailFragment.text = getString(R.string.detail_fragment_unliked_item_text)
         vTextForShareButonWithLikeDetailFragment.text = getString(R.string.detail_fragment_share_button_text)
@@ -102,14 +111,21 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
     override fun setSellerName(nickname: String) {
         vSellerNameDetailFragment.apply {
             visibility = View.VISIBLE
-            text = String.format(getString(R.string.detail_fragment_seller_name), nickname)
+            text = getString(R.string.detail_fragment_seller_name, nickname)
         }
     }
 
     override fun setSellerReputationAndQuantitySold(reputation: String, quantitySold: Int) {
         vSellerReputationAndQuantity.apply {
             visibility = View.VISIBLE
-            text = String.format(getString(R.string.detail_fragment_seller_reputation_and_sold_quantity), reputation, quantitySold)
+            text = getString(R.string.detail_fragment_seller_reputation_and_sold_quantity, reputation, quantitySold)
+        }
+    }
+
+    override fun setSellerWithoutReputation() {
+        vSellerReputationAndQuantity.apply {
+            visibility = View.VISIBLE
+            text = getString(R.string.detail_fragment_seller_without_reputation_yet)
         }
     }
 
@@ -130,6 +146,19 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
             visibility = View.VISIBLE
             text = getString(R.string.detail_fragment_error_getting_seller_data)
         }
+    }
+
+    override fun showUnavailableStock() {
+        vStockQuantitySelectorTitle.text = getString(R.string.detail_fragment_stock_unavailable)
+        vStockQuantitySelectedDetailFragment.text = getText(R.string.empty_text)
+        vStockAvailableQuantityDetailFragment.text = getString(R.string.detail_fragment_unavailable_stock_detailed)
+        vStockQuantitySelectedDetailFragment.setOnClickListener {  }
+    }
+
+    override fun setAvailableStock(availableQuantity: Int) {
+        vStockQuantitySelectorTitle.text = getString(R.string.detail_fragment_stock_available)
+        vStockQuantitySelectedDetailFragment.text = "1"
+        vStockAvailableQuantityDetailFragment.text = getString(R.string.detail_fragment_stock_available_quantity, availableQuantity.toString())
     }
 
     companion object {

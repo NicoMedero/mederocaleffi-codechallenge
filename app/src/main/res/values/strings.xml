@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">CodeChallenge</string>
 
+    <string name="empty_text"/>
+
     <!-- Custom Toolbar -->
     <string name="custom_toolbar_search_view_query_hint">Buscá lo que quieras</string>
 
@@ -23,5 +25,11 @@
     <string name="detail_fragment_seller_reputation_and_sold_quantity">Mercado-%s | %d ventas</string>
     <string name="detail_fragment_share_body">Hola! Chequeate esta publicación de MercadoLibre!</string>
     <string name="detail_fragment_share_title">Compartir a través de:</string>
+    <string name="detail_fragment_stock_unavailable">Sin stock</string>
+    <string name="detail_fragment_stock_quantity_title">"Cantidad: "</string>
+    <string name="detail_fragment_unavailable_stock_detailed">Sin stock para seleccionar</string>
+    <string name="detail_fragment_stock_available">Stock disponible</string>
+    <string name="detail_fragment_stock_available_quantity">(%s disponibles)</string>
+    <string name="detail_fragment_seller_without_reputation_yet">Este vendedor no tiene suficientes ventas para ser calificado</string>
 
 </resources>

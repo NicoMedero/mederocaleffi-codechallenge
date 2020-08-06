@@ -22,8 +22,6 @@
             android:layout_height="40dp"
             android:textOn=""
             android:textOff=""
-            android:clickable="true"
-            android:focusable="true"
             android:background="@drawable/like_selected_state"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/vTextForLikeButonWithShareDetailFragment"
