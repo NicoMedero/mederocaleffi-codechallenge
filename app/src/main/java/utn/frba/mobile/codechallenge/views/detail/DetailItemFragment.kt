@@ -2,6 +2,7 @@ package utn.frba.mobile.codechallenge.views.detail
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -11,7 +12,6 @@ import kotlinx.android.synthetic.main.like_and_share_detail_fragment.*
 import utn.frba.mobile.codechallenge.R
 import utn.frba.mobile.codechallenge.models.DetailItem
 import utn.frba.mobile.codechallenge.models.ItemList
-import utn.frba.mobile.codechallenge.models.SellerReputation
 import utn.frba.mobile.codechallenge.views.sharedCustomViews.CustomToolbarInterface
 import utn.frba.mobile.codechallenge.views.detail.DetailItemActivity.Companion.ITEM_LIST_DATA
 
@@ -74,7 +74,7 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
     }
 
     override fun stopProgressBar() {
-        vProgressBarDetailItemFragment.visibility = View.GONE
+        vProgressBarAndErrorContainerDetailItemFragment.visibility = View.GONE
     }
 
     override fun setMainItemDetails(detailItem: DetailItem) {
@@ -110,6 +110,25 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         vSellerReputationAndQuantity.apply {
             visibility = View.VISIBLE
             text = String.format(SELLER_REPUTATION, reputation, quantitySold)
+        }
+    }
+
+    override fun showLoadingItemDataError() {
+        vProgressBarDetailItemFragment.visibility = View.GONE
+        vToolbarDetailFragment.hideLikeButton()
+        vErrorImageDetailItemFragment.apply {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                background = requireContext().getDrawable(R.drawable.sad_emoji)
+                visibility = View.VISIBLE
+            }
+        }
+        Toast.makeText(requireContext(), getString(R.string.detail_fragment_error_getting_item_data), Toast.LENGTH_LONG).show()
+    }
+
+    override fun showGetSellerInfoError() {
+        vSellerNameDetailFragment.apply {
+            visibility = View.VISIBLE
+            text = getString(R.string.detail_fragment_error_getting_seller_data)
         }
     }
 

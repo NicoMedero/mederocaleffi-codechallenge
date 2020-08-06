@@ -14,6 +14,6 @@ interface DetailItemRepository {
     fun searchSellerById(
         id: Int,
         onSuccess: (Seller) -> Unit?,
-        onFailure: (String?) -> Unit
+        onFailure: () -> Unit
     )
 }

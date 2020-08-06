@@ -12,15 +12,14 @@ class DetailItemPresenter(private val view: DetailItemView) {
 
     fun setItemData(itemData: ItemList?) {
         if (itemData == null) {
-            view.stopProgressBar()
-            //TODO: Manage error.
+            view.showLoadingItemDataError()
             return
         }
 
         itemData.run {
             setLikeStatus(this.like)
             repository.searchItemById(this.id, { onSuccess(it) }, { onFailure() })
-            repository.searchSellerById(this.seller.id, { onSuccess(it) }, { onFailure(it) })
+            repository.searchSellerById(this.seller.id, { onSuccess(it) }, { onFailureGettingSellerData() })
         }
     }
 
@@ -45,12 +44,11 @@ class DetailItemPresenter(private val view: DetailItemView) {
     }
 
     private fun onFailure() {
-        view.stopProgressBar()
-        //TODO: Implement
+        view.showLoadingItemDataError()
     }
 
-    private fun onFailure(message: String?) {
-        //TODO: Implement
+    private fun onFailureGettingSellerData() {
+        view.showGetSellerInfoError()
     }
 
     fun onLikeButtonClicked(checked: Boolean) {

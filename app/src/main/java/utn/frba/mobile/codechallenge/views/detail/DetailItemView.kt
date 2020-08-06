@@ -23,4 +23,8 @@ interface DetailItemView {
 
     fun setSellerReputationAndQuantitySold(reputation: String, quantitySold: Int)
 
+    fun showLoadingItemDataError()
+
+    fun showGetSellerInfoError()
+
 }

@@ -15,5 +15,7 @@
     <string name="detail_fragment_liked_item_text">Quitar de favoritos</string>
     <string name="detail_fragment_unliked_item_text">Agregar a favoritos</string>
     <string name="detail_fragment_share_button_text">Compartir</string>
+    <string name="detail_fragment_error_getting_item_data">Hubo un error al cargar la información del producto, vuelve a intentarlo!</string>
+    <string name="detail_fragment_error_getting_seller_data">Lo sentimos, no logramos cargar la info del vendedor.</string>
 
 </resources>

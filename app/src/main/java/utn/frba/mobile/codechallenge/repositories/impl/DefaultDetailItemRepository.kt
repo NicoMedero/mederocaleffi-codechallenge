@@ -31,7 +31,7 @@ class DefaultDetailItemRepository : BaseRepository(), DetailItemRepository{
         })
     }
 
-    override fun searchSellerById(id: Int, onSuccess: (Seller) -> Unit?, onFailure: (String?) -> Unit) {
+    override fun searchSellerById(id: Int, onSuccess: (Seller) -> Unit?, onFailure: () -> Unit) {
         val service = retrofit.create(DetailItemService::class.java)
         val call = service.getSellerById(id)
 
@@ -43,7 +43,7 @@ class DefaultDetailItemRepository : BaseRepository(), DetailItemRepository{
             }
 
             override fun onFailure(call: Call<Seller>, t: Throwable) {
-                onFailure.invoke(t.message)
+                onFailure.invoke()
             }
         })
     }
