@@ -2,6 +2,7 @@ package utn.frba.mobile.codechallenge.views.sharedCustomViews.impl
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -43,14 +44,7 @@ class CustomToolbar @JvmOverloads constructor(
 
         val likeButton = vCustomToolbar.menu.findItem(R.id.vLikeButtonDetailFragment)
         likeButton.setOnMenuItemClickListener {
-            if (it.isChecked) {
-                it.setIcon(R.drawable.ic_not_like_black)
-                view.unlikeItem()
-            } else {
-                it.setIcon(R.drawable.ic_like_black)
-                view.likeItem()
-            }
-            it.isChecked = !it.isChecked
+            changeLikeButtonStateClickListener(it)
             true
         }
 
@@ -73,6 +67,22 @@ class CustomToolbar @JvmOverloads constructor(
                 return false
             }
         }
+    }
+
+    private fun changeLikeButtonStateClickListener(button: MenuItem) {
+        if (button.isChecked) {
+            button.setIcon(R.drawable.ic_not_like_black)
+            view.unlikeItem()
+        } else {
+            button.setIcon(R.drawable.ic_like_black)
+            view.likeItem()
+        }
+        button.isChecked = !button.isChecked
+    }
+
+    fun changeLikeButtonState() {
+        val likeButton = vCustomToolbar.menu.findItem(R.id.vLikeButtonDetailFragment)
+        changeLikeButtonStateClickListener(likeButton)
     }
 
     fun setLikeStatus() {

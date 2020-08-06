@@ -1,11 +1,13 @@
 package utn.frba.mobile.codechallenge.views.detail
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.detail_fragment.*
+import kotlinx.android.synthetic.main.like_and_share_detail_fragment.*
 import utn.frba.mobile.codechallenge.R
 import utn.frba.mobile.codechallenge.models.DetailItem
 import utn.frba.mobile.codechallenge.models.ItemList
@@ -31,17 +33,28 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         super.onViewCreated(view, savedInstanceState)
         vToolbarDetailFragment.initWithLikeAndSearchButton(this)
         vMainItemDetailFragment.bindWithView(this)
-
+        vAddToLikesButtonContainerDetailFragment.apply {
+            setOnClickListener {
+                presenter.onLikeButtonClicked(vLikeButtonWithShareDetailFragment.isChecked)
+            }
+        }
+        vShareButtonContainerDetailFragment.setOnClickListener {
+            presenter.onShareButtonClicked()
+        }
+        vTextForLikeButonWithShareDetailFragment.text = getString(R.string.detail_fragment_unliked_item_text)
+        vTextForShareButonWithLikeDetailFragment.text = getString(R.string.detail_fragment_share_button_text)
 
         presenter.setItemData(arguments?.getSerializable(ITEM_LIST_DATA) as ItemList)
     }
 
     override fun unlikeItem() {
-        Toast.makeText(context, "Unlike item", Toast.LENGTH_SHORT).show()
+        vLikeButtonWithShareDetailFragment.isChecked = false
+        vTextForLikeButonWithShareDetailFragment.text = getString(R.string.detail_fragment_unliked_item_text)
     }
 
     override fun likeItem() {
-        Toast.makeText(context, "Like item", Toast.LENGTH_SHORT).show()
+        vLikeButtonWithShareDetailFragment.isChecked = true
+        vTextForLikeButonWithShareDetailFragment.text = getString(R.string.detail_fragment_liked_item_text)
     }
 
     override fun queryTextSubmitted(query: String) {
@@ -55,6 +68,8 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
 
     override fun setLikeStatus() {
         vToolbarDetailFragment.setLikeStatus()
+        vLikeButtonWithShareDetailFragment.isChecked = true
+        vTextForLikeButonWithShareDetailFragment.text = getString(R.string.detail_fragment_liked_item_text)
     }
 
     override fun stopProgressBar() {
@@ -63,6 +78,24 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
 
     override fun setMainItemDetails(detailItem: DetailItem) {
         vMainItemDetailFragment.setItemData(detailItem)
+    }
+
+    override fun onUnlikedItem() {
+        unlikeItem()
+        vToolbarDetailFragment.changeLikeButtonState()
+    }
+
+    override fun onLikedItem() {
+        likeItem()
+        vToolbarDetailFragment.changeLikeButtonState()
+    }
+
+    override fun showShareBottomSheet() {
+        val sharingIntent = Intent(Intent.ACTION_SEND)
+        sharingIntent.type = "text/plain"
+        val shareBody = "Hola! Chequeate esta publicación de MercadoLibre!"
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+        requireContext().startActivity(Intent.createChooser(sharingIntent, "Compartir a través de:"))
     }
 
     companion object {

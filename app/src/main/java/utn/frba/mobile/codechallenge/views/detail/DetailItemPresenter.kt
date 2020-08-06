@@ -37,4 +37,16 @@ class DetailItemPresenter(private val view: DetailItemView) {
         view.stopProgressBar()
         //TODO: Implement
     }
+
+    fun onLikeButtonClicked(checked: Boolean) {
+        if (checked) {
+            view.onUnlikedItem()
+        } else {
+            view.onLikedItem()
+        }
+    }
+
+    fun onShareButtonClicked() {
+        view.showShareBottomSheet()
+    }
 }

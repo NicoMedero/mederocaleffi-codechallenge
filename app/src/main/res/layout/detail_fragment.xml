@@ -34,6 +34,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <include
+                android:id="@+id/vLikeAndShareDetailFragment"
+                layout="@layout/like_and_share_detail_fragment"/>
+
         </LinearLayout>
 
     </ScrollView>

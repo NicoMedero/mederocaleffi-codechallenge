@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/space_medium"
+    android:layout_marginBottom="@dimen/space_medium">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vAddToLikesButtonContainerDetailFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/like_and_share_detail_fragment_add_to_likes_margin"
+        android:layout_marginRight="@dimen/like_and_share_detail_fragment_add_to_likes_margin">
+
+        <androidx.appcompat.widget.AppCompatToggleButton
+            android:id="@+id/vLikeButtonWithShareDetailFragment"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:textOn=""
+            android:textOff=""
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/like_selected_state"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/vTextForLikeButonWithShareDetailFragment"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/vTextForLikeButonWithShareDetailFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_smaller"
+            android:layout_marginLeft="@dimen/space_smaller"
+            style="@style/LikeAndShareDetailItem"
+            app:layout_constraintStart_toEndOf="@id/vLikeButtonWithShareDetailFragment"
+            app:layout_constraintTop_toTopOf="@id/vLikeButtonWithShareDetailFragment"
+            app:layout_constraintBottom_toBottomOf="@id/vLikeButtonWithShareDetailFragment"
+            tools:text="Agregar a favoritos"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vShareButtonContainerDetailFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/vShareButtonWithLikeDetailFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/share"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/vTextForShareButonWithLikeDetailFragment"/>
+
+        <TextView
+            android:id="@+id/vTextForShareButonWithLikeDetailFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_small"
+            android:layout_marginLeft="@dimen/space_small"
+            style="@style/LikeAndShareDetailItem"
+            app:layout_constraintStart_toEndOf="@+id/vShareButtonWithLikeDetailFragment"
+            app:layout_constraintTop_toTopOf="@+id/vShareButtonWithLikeDetailFragment"
+            app:layout_constraintBottom_toBottomOf="@+id/vShareButtonWithLikeDetailFragment"
+            tools:text="Compartir"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

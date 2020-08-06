@@ -26,12 +26,11 @@ class MainItemDetailComponent @JvmOverloads constructor(
 
     init {
         View.inflate(context, R.layout.main_item_detail_fragment, this)
-
-        vShareButtonMainItemDetail.setOnClickListener(setShareClickListener())
     }
 
     fun bindWithView(view: DetailItemView) {
         detailView = view
+        vShareButtonMainItemDetail.setOnClickListener{ detailView.showShareBottomSheet() }
     }
 
     fun setItemData(detailItem: DetailItem) {
@@ -96,16 +95,6 @@ class MainItemDetailComponent @JvmOverloads constructor(
             "$sold vendidos"
         } else {
             "$sold vendido"
-        }
-    }
-
-    private fun setShareClickListener(): OnClickListener {
-        return OnClickListener {
-            val sharingIntent = Intent(Intent.ACTION_SEND)
-            sharingIntent.type = "text/plain"
-            val shareBody = "Hola! Chequeate esta publicación de MercadoLibre!"
-            sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
-            context.startActivity(Intent.createChooser(sharingIntent, "Compartir a través de:"))
         }
     }
 

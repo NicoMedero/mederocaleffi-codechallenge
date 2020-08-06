@@ -12,5 +12,8 @@
     <string name="search_view_no_more_items_to_show_message">No tenemos mas Ítems para mostrarte.</string>
     <string name="custom_toolbar_title">Producto</string>
     <string name="main_item_detail_normal_shipping">Envío con normalidad</string>
+    <string name="detail_fragment_liked_item_text">Quitar de favoritos</string>
+    <string name="detail_fragment_unliked_item_text">Agregar a favoritos</string>
+    <string name="detail_fragment_share_button_text">Compartir</string>
 
 </resources>

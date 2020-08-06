@@ -10,4 +10,10 @@ interface DetailItemView {
     fun stopProgressBar()
 
     fun setMainItemDetails(detailItem: DetailItem)
+
+    fun onUnlikedItem()
+
+    fun onLikedItem()
+
+    fun showShareBottomSheet()
 }
