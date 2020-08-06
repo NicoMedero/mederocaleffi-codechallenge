@@ -9,6 +9,8 @@
     <dimen name="space_medium_small">14dp</dimen>
     <dimen name="space_medium">16dp</dimen>
     <dimen name="space_large_smaller">18dp</dimen>
+    <dimen name="space_large_small">20dp</dimen>
+    <dimen name="space_large">22dp</dimen>
 
     <!-- Font Size -->
     <dimen name="item_list_description">16sp</dimen>

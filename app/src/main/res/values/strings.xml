@@ -31,5 +31,7 @@
     <string name="detail_fragment_stock_available">Stock disponible</string>
     <string name="detail_fragment_stock_available_quantity">(%s disponibles)</string>
     <string name="detail_fragment_seller_without_reputation_yet">Este vendedor no tiene suficientes ventas para ser calificado</string>
+    <string name="detail_fragment_buy_now_button">Comprar ahora</string>
+    <string name="detail_fragment_add_to_cart_button">Agregar al carrito</string>
 
 </resources>

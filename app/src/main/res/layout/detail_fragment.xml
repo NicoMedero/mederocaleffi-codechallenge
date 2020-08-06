@@ -71,6 +71,30 @@
                 android:id="@+id/vStockQuantitySelectorDetailFragment"
                 layout="@layout/stock_quantity_selector_detail_fragment"/>
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/buttons_height"
+                android:layout_marginTop="@dimen/space_large"
+                android:text="@string/detail_fragment_buy_now_button"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:clickable="true"
+                android:focusable="true"
+                android:textColor="@color/white"
+                android:background="@drawable/buy_now_background"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/buttons_height"
+                android:layout_marginTop="@dimen/space_smaller"
+                android:text="@string/detail_fragment_add_to_cart_button"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:clickable="true"
+                android:focusable="true"
+                android:textColor="@color/light_blue"
+                android:background="@drawable/add_to_cart_background"/>
+
             <include
                 android:id="@+id/vLikeAndShareDetailFragment"
                 layout="@layout/like_and_share_detail_fragment"/>
