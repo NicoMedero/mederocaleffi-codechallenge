@@ -5,10 +5,12 @@ import utn.frba.mobile.codechallenge.models.ItemList
 import utn.frba.mobile.codechallenge.models.Seller
 import utn.frba.mobile.codechallenge.repositories.DetailItemRepository
 import utn.frba.mobile.codechallenge.repositories.impl.DefaultDetailItemRepository
+import kotlin.math.max
 
 class DetailItemPresenter(private val view: DetailItemView) {
 
     private val repository: DetailItemRepository = DefaultDetailItemRepository()
+    private var detailItem: DetailItem? = null
 
     fun setItemData(itemData: ItemList?) {
         if (itemData == null) {
@@ -30,6 +32,7 @@ class DetailItemPresenter(private val view: DetailItemView) {
     }
 
     private fun onSuccess(detailItem: DetailItem) {
+        this.detailItem = detailItem
         view.stopProgressBar()
         view.setMainItemDetails(detailItem)
         if (detailItem.availableQuantity == 0) {
@@ -71,6 +74,7 @@ class DetailItemPresenter(private val view: DetailItemView) {
     }
 
     fun onStockSelectorClicked() {
-        //
+        view.showStockQuantityBottomSheetSelector()
     }
+
 }

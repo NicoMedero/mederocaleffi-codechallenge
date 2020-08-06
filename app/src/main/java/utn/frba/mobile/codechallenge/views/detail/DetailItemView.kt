@@ -33,4 +33,6 @@ interface DetailItemView {
 
     fun setSellerWithoutReputation()
 
+    fun showStockQuantityBottomSheetSelector()
+
 }

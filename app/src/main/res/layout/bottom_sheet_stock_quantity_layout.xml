@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vBottomSheetStockQuantityContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_sheet_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textColor="@color/black"
+        android:paddingStart="@dimen/space_medium"
+        android:paddingLeft="@dimen/space_medium"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:text="Elegí la cantidad" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="@color/black"
+        android:background="@color/light_gray"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:text="1 unidad"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:text="2 unidades"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:text="3 unidades"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:text="4 unidades"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:text="5 unidades"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:text="Mas de 6 unidades"/>
+
+</LinearLayout>
