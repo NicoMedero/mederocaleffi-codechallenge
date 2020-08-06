@@ -12,10 +12,16 @@
     <string name="search_view_no_more_items_to_show_message">No tenemos mas Ítems para mostrarte.</string>
     <string name="custom_toolbar_title">Producto</string>
     <string name="main_item_detail_normal_shipping">Envío con normalidad</string>
+
+
     <string name="detail_fragment_liked_item_text">Quitar de favoritos</string>
     <string name="detail_fragment_unliked_item_text">Agregar a favoritos</string>
     <string name="detail_fragment_share_button_text">Compartir</string>
     <string name="detail_fragment_error_getting_item_data">Hubo un error al cargar la información del producto, vuelve a intentarlo!</string>
     <string name="detail_fragment_error_getting_seller_data">Lo sentimos, no logramos cargar la info del vendedor.</string>
+    <string name="detail_fragment_seller_name">Vendido por %s</string>
+    <string name="detail_fragment_seller_reputation_and_sold_quantity">Mercado-%s | %d ventas</string>
+    <string name="detail_fragment_share_body">Hola! Chequeate esta publicación de MercadoLibre!</string>
+    <string name="detail_fragment_share_title">Compartir a través de:</string>
 
 </resources>

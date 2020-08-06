@@ -93,23 +93,23 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
 
     override fun showShareBottomSheet() {
         val sharingIntent = Intent(Intent.ACTION_SEND)
-        sharingIntent.type = "text/plain"
-        val shareBody = "Hola! Chequeate esta publicación de MercadoLibre!"
+        sharingIntent.type = SHARE_INTENT_TYPE
+        val shareBody = getString(R.string.detail_fragment_share_body)
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
-        requireContext().startActivity(Intent.createChooser(sharingIntent, "Compartir a través de:"))
+        requireContext().startActivity(Intent.createChooser(sharingIntent, getString(R.string.detail_fragment_share_title)))
     }
 
     override fun setSellerName(nickname: String) {
         vSellerNameDetailFragment.apply {
             visibility = View.VISIBLE
-            text = String.format(SELLER_NAME, nickname)
+            text = String.format(getString(R.string.detail_fragment_seller_name), nickname)
         }
     }
 
     override fun setSellerReputationAndQuantitySold(reputation: String, quantitySold: Int) {
         vSellerReputationAndQuantity.apply {
             visibility = View.VISIBLE
-            text = String.format(SELLER_REPUTATION, reputation, quantitySold)
+            text = String.format(getString(R.string.detail_fragment_seller_reputation_and_sold_quantity), reputation, quantitySold)
         }
     }
 
@@ -140,7 +140,6 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
             detailItemFragment.arguments = args
             return detailItemFragment
         }
-        private const val SELLER_NAME = "Vendido por %s"
-        private const val SELLER_REPUTATION = "Mercado-%s | %d ventas"
+        private const val SHARE_INTENT_TYPE = "text/plain"
     }
 }
