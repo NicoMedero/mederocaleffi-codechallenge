@@ -19,6 +19,8 @@
         android:id="@+id/vScrollViewDetailFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:paddingStart="@dimen/space_small"
+        android:paddingEnd="@dimen/space_small"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vToolbarDetailFragment"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +35,26 @@
                 android:id="@+id/vMainItemDetailFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/vSellerNameDetailFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_medium"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                tools:text="Vendido por Mede"
+                tools:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/vSellerReputationAndQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_smallest"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                tools:text="Mercado-platinum | 31930 ventas"
+                tools:visibility="visible"/>
 
             <include
                 android:id="@+id/vLikeAndShareDetailFragment"

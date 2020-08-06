@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.like_and_share_detail_fragment.*
 import utn.frba.mobile.codechallenge.R
 import utn.frba.mobile.codechallenge.models.DetailItem
 import utn.frba.mobile.codechallenge.models.ItemList
+import utn.frba.mobile.codechallenge.models.SellerReputation
 import utn.frba.mobile.codechallenge.views.sharedCustomViews.CustomToolbarInterface
 import utn.frba.mobile.codechallenge.views.detail.DetailItemActivity.Companion.ITEM_LIST_DATA
 
@@ -98,6 +99,20 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         requireContext().startActivity(Intent.createChooser(sharingIntent, "Compartir a través de:"))
     }
 
+    override fun setSellerName(nickname: String) {
+        vSellerNameDetailFragment.apply {
+            visibility = View.VISIBLE
+            text = String.format(SELLER_NAME, nickname)
+        }
+    }
+
+    override fun setSellerReputationAndQuantitySold(reputation: String, quantitySold: Int) {
+        vSellerReputationAndQuantity.apply {
+            visibility = View.VISIBLE
+            text = String.format(SELLER_REPUTATION, reputation, quantitySold)
+        }
+    }
+
     companion object {
         fun newInstance(itemList: ItemList?): DetailItemFragment {
             val detailItemFragment = DetailItemFragment()
@@ -106,5 +121,7 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
             detailItemFragment.arguments = args
             return detailItemFragment
         }
+        private const val SELLER_NAME = "Vendido por %s"
+        private const val SELLER_REPUTATION = "Mercado-%s | %d ventas"
     }
 }

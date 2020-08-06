@@ -1,6 +1,8 @@
 package utn.frba.mobile.codechallenge.views.detail
 
 import utn.frba.mobile.codechallenge.models.DetailItem
+import utn.frba.mobile.codechallenge.models.Seller
+import utn.frba.mobile.codechallenge.models.SellerReputation
 
 interface DetailItemView {
     fun getIdIfItemWasLiked(): Int?
@@ -16,4 +18,9 @@ interface DetailItemView {
     fun onLikedItem()
 
     fun showShareBottomSheet()
+
+    fun setSellerName(nickname: String)
+
+    fun setSellerReputationAndQuantitySold(reputation: String, quantitySold: Int)
+
 }
