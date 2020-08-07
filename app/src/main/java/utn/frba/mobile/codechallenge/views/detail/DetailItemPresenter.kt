@@ -5,6 +5,7 @@ import utn.frba.mobile.codechallenge.models.ItemList
 import utn.frba.mobile.codechallenge.models.Seller
 import utn.frba.mobile.codechallenge.repositories.DetailItemRepository
 import utn.frba.mobile.codechallenge.repositories.impl.DefaultDetailItemRepository
+import java.io.Serializable
 
 class DetailItemPresenter(private val view: DetailItemView) {
 
@@ -76,8 +77,25 @@ class DetailItemPresenter(private val view: DetailItemView) {
         if (detailItem?.availableQuantity != null) {
             view.showStockQuantityBottomSheetSelector(detailItem!!.availableQuantity)
         } else {
-            null
+            view.showErrorForQuantitySelector()
         }
     }
+
+    fun getDetailItemInstance(): Serializable? {
+        return detailItem
+    }
+
+    fun restoreDetailItemState(detailItem: DetailItem?) {
+        this.detailItem = detailItem
+    }
+
+    fun restoreLikedState(likedState: Boolean) {
+        if (likedState) {
+            view.setLikeStatus()
+        } else {
+            view.onUnlikedItem()
+        }
+    }
+
 
 }

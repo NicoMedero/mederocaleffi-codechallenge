@@ -34,5 +34,6 @@
     <string name="detail_fragment_buy_now_button">Comprar ahora</string>
     <string name="detail_fragment_add_to_cart_button">Agregar al carrito</string>
     <string name="detail_fragment_bottom_sheet_choose_quantity">Elegí la cantidad</string>
+    <string name="detail_fragment_error_opening_stock_selector">Hubo un error al cargar el stock disponible, vuelve a intentar luego!</string>
 
 </resources>

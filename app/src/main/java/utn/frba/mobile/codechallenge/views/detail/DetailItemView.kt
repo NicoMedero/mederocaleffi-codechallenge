@@ -35,4 +35,6 @@ interface DetailItemView {
 
     fun showStockQuantityBottomSheetSelector(maxQuantity: Int)
 
+    fun showErrorForQuantitySelector()
+
 }

@@ -57,6 +57,11 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         vTextForShareButonWithLikeDetailFragment.text = getString(R.string.detail_fragment_share_button_text)
 
         presenter.setItemData(arguments?.getSerializable(ITEM_LIST_DATA) as ItemList)
+
+        if (savedInstanceState != null) {
+            presenter.restoreDetailItemState(savedInstanceState.getSerializable(DETAIL_ITEM_KEY) as DetailItem)
+            presenter.restoreLikedState(savedInstanceState.getBoolean(LIKE_STATE_KEY))
+        }
     }
 
     override fun unlikeItem() {
@@ -168,6 +173,15 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         stockSelector?.show(fragmentManager!!, stockSelector?.tag)
     }
 
+    override fun showErrorForQuantitySelector() {
+        Toast.makeText(requireContext(), getString(R.string.detail_fragment_error_opening_stock_selector), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putSerializable(DETAIL_ITEM_KEY, presenter.getDetailItemInstance())
+        outState.putBoolean(LIKE_STATE_KEY, vLikeButtonWithShareDetailFragment.isChecked)
+    }
+
     override fun onPause() {
         super.onPause()
         /**
@@ -187,5 +201,7 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
             return detailItemFragment
         }
         private const val SHARE_INTENT_TYPE = "text/plain"
+        private const val DETAIL_ITEM_KEY = "detail_item"
+        private const val LIKE_STATE_KEY = "like_state"
     }
 }

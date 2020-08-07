@@ -1,6 +1,7 @@
 package utn.frba.mobile.codechallenge.models
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class DetailItem(
     val id: String,
@@ -12,4 +13,4 @@ data class DetailItem(
     @SerializedName("available_quantity")
     val availableQuantity: Int,
     val pictures: List<ItemImages>
-)
+): Serializable
