@@ -92,10 +92,6 @@ class DetailItemPresenter(private val view: DetailItemView) {
     fun restoreLikedState(likedState: Boolean) {
         if (likedState) {
             view.setLikeStatus()
-        } else {
-            view.onUnlikedItem()
         }
     }
-
-
 }

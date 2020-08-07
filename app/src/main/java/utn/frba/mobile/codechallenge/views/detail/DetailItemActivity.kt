@@ -9,7 +9,7 @@ import utn.frba.mobile.codechallenge.models.ItemList
 
 class DetailItemActivity : AppCompatActivity() {
 
-    private lateinit var detailItemView: DetailItemView
+    private var detailItemView: DetailItemView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class DetailItemActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val itemListId = detailItemView.getIdIfItemWasLiked()
+        val itemListId = detailItemView?.getIdIfItemWasLiked()
         val returnIntent = Intent()
         if (itemListId == null) {
             setResult(Activity.RESULT_CANCELED, returnIntent)
