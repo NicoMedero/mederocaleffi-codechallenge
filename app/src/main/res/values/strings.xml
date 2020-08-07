@@ -33,5 +33,6 @@
     <string name="detail_fragment_seller_without_reputation_yet">Este vendedor no tiene suficientes ventas para ser calificado</string>
     <string name="detail_fragment_buy_now_button">Comprar ahora</string>
     <string name="detail_fragment_add_to_cart_button">Agregar al carrito</string>
+    <string name="detail_fragment_bottom_sheet_choose_quantity">Elegí la cantidad</string>
 
 </resources>

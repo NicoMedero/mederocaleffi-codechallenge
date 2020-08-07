@@ -13,8 +13,15 @@
     <dimen name="space_large">22dp</dimen>
 
     <!-- Font Size -->
-    <dimen name="item_list_description">16sp</dimen>
-    <dimen name="item_list_price">20sp</dimen>
+    <dimen name="font_smallest">4sp</dimen>
+    <dimen name="font_smaller">6sp</dimen>
+    <dimen name="font_small">10sp</dimen>
+    <dimen name="font_medium_smaller">12sp</dimen>
+    <dimen name="font_medium_small">14sp</dimen>
+    <dimen name="font_medium">16sp</dimen>
+    <dimen name="font_large_smaller">18sp</dimen>
+    <dimen name="font_large_small">20sp</dimen>
+    <dimen name="font_large">22sp</dimen>
 
     <!-- Custom Toolbar -->
     <dimen name="custom_toolbar_search_view_margin">24dp</dimen>

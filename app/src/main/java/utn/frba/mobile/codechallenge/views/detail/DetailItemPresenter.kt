@@ -5,7 +5,6 @@ import utn.frba.mobile.codechallenge.models.ItemList
 import utn.frba.mobile.codechallenge.models.Seller
 import utn.frba.mobile.codechallenge.repositories.DetailItemRepository
 import utn.frba.mobile.codechallenge.repositories.impl.DefaultDetailItemRepository
-import kotlin.math.max
 
 class DetailItemPresenter(private val view: DetailItemView) {
 
@@ -74,7 +73,11 @@ class DetailItemPresenter(private val view: DetailItemView) {
     }
 
     fun onStockSelectorClicked() {
-        view.showStockQuantityBottomSheetSelector()
+        if (detailItem?.availableQuantity != null) {
+            view.showStockQuantityBottomSheetSelector(detailItem!!.availableQuantity)
+        } else {
+            null
+        }
     }
 
 }

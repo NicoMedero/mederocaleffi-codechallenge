@@ -1,17 +1,12 @@
 package utn.frba.mobile.codechallenge.views.detail
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import kotlinx.android.synthetic.main.bottom_sheet_stock_quantity_layout.*
 import kotlinx.android.synthetic.main.detail_fragment.*
 import kotlinx.android.synthetic.main.like_and_share_detail_fragment.*
 import kotlinx.android.synthetic.main.stock_quantity_selector_detail_fragment.*
@@ -20,10 +15,12 @@ import utn.frba.mobile.codechallenge.models.DetailItem
 import utn.frba.mobile.codechallenge.models.ItemList
 import utn.frba.mobile.codechallenge.views.sharedCustomViews.CustomToolbarInterface
 import utn.frba.mobile.codechallenge.views.detail.DetailItemActivity.Companion.ITEM_LIST_DATA
+import utn.frba.mobile.codechallenge.views.detail.customViews.impl.StockSelector
 
 class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
 
     private lateinit var presenter: DetailItemPresenter
+    private var stockSelector: StockSelector? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -166,12 +163,19 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         vStockAvailableQuantityDetailFragment.text = getString(R.string.detail_fragment_stock_available_quantity, availableQuantity.toString())
     }
 
-    override fun showStockQuantityBottomSheetSelector() {
-        val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
-        val bottomSheetView = LayoutInflater.from(requireContext())
-            .inflate(R.layout.bottom_sheet_stock_quantity_layout, vBottomSheetStockQuantityContainer)
-        bottomSheetDialog.setContentView(bottomSheetView)
-        bottomSheetDialog.show()
+    override fun showStockQuantityBottomSheetSelector(maxQuantity: Int) {
+        stockSelector = StockSelector(maxQuantity)
+        stockSelector?.show(fragmentManager!!, stockSelector?.tag)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        /**
+         * This is to prevent the app crash
+         * when rotating the device with
+         * the bottom sheet instantiated.
+         */
+        stockSelector?.dismiss()
     }
 
     companion object {
