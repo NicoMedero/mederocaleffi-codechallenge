@@ -35,5 +35,12 @@
     <string name="detail_fragment_add_to_cart_button">Agregar al carrito</string>
     <string name="detail_fragment_bottom_sheet_choose_quantity">Elegí la cantidad</string>
     <string name="detail_fragment_error_opening_stock_selector">Hubo un error al cargar el stock disponible, vuelve a intentar luego!</string>
+    <string name="detail_fragment_product_info_title">Información del producto</string>
+    <string name="detail_fragment_new_state">"Nuevo | "</string>
+    <string name="detail_fragment_used_state">"Usado | "</string>
+    <string name="detail_fragment_plural_sold">%s vendidos</string>
+    <string name="detail_fragment_one_sold">%s vendido</string>
+    <string name="detail_fragment_price">$ %s</string>
+    <string name="detail_fragment_image_count_chip">%s / %d</string>
 
 </resources>

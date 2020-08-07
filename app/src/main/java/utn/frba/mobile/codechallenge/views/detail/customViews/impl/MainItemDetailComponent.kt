@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.main_item_detail_fragment.view.*
 import utn.frba.mobile.codechallenge.R
 import utn.frba.mobile.codechallenge.models.DetailItem
 import utn.frba.mobile.codechallenge.models.ItemImages
+import utn.frba.mobile.codechallenge.views.detail.DetailItemPresenter
 import utn.frba.mobile.codechallenge.views.detail.DetailItemView
 
 class MainItemDetailComponent @JvmOverloads constructor(
@@ -22,15 +23,15 @@ class MainItemDetailComponent @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr){
 
-    private lateinit var detailView: DetailItemView
+    private lateinit var presenter: DetailItemPresenter
 
     init {
         View.inflate(context, R.layout.main_item_detail_fragment, this)
     }
 
-    fun bindWithView(view: DetailItemView) {
-        detailView = view
-        vShareButtonMainItemDetail.setOnClickListener{ detailView.showShareBottomSheet() }
+    fun setPresenter(presenter: DetailItemPresenter) {
+        this.presenter = presenter
+        vShareButtonMainItemDetail.setOnClickListener{ presenter.onShareButtonClicked() }
     }
 
     fun setItemData(detailItem: DetailItem) {
@@ -68,7 +69,8 @@ class MainItemDetailComponent @JvmOverloads constructor(
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
-                vImageCountMainItemDetail.text = String.format(IMAGE_COUNT, position+1, picturesListSize)
+
+                vImageCountMainItemDetail.text = context.getString(R.string.detail_fragment_image_count_chip, (position+1).toString(), picturesListSize)
             }
 
             override fun onPageSelected(position: Int) {
@@ -79,26 +81,26 @@ class MainItemDetailComponent @JvmOverloads constructor(
     }
 
     private fun getItemCondition(condition: String): String {
-        return if (condition == "new") {
-            "Nuevo | "
+        return if (condition == STATE_NEW) {
+            context.getString(R.string.detail_fragment_new_state)
         } else {
-            "Usado | "
+            context.getString(R.string.detail_fragment_used_state)
         }
     }
 
     private fun getItemPrice(price: Float): String {
-        return "$ $price"
+        return context.getString(R.string.detail_fragment_price, price.toString())
     }
 
     private fun getSoldQuantity(sold: Int): String {
         return if (sold != 1) {
-            "$sold vendidos"
+            context.getString(R.string.detail_fragment_plural_sold, sold.toString())
         } else {
-            "$sold vendido"
+            context.getString(R.string.detail_fragment_one_sold, sold.toString())
         }
     }
 
     companion object {
-        private const val IMAGE_COUNT = "%s / %d"
+        private const val STATE_NEW = "new"
     }
 }

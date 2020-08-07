@@ -36,7 +36,7 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         vToolbarDetailFragment.initWithLikeAndSearchButton(this)
-        vMainItemDetailFragment.bindWithView(this)
+        vMainItemDetailFragment.setPresenter(presenter)
         vAddToLikesButtonContainerDetailFragment.apply {
             setOnClickListener {
                 presenter.onLikeButtonClicked(vLikeButtonWithShareDetailFragment.isChecked)
