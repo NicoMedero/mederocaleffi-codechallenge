@@ -12,5 +12,6 @@ data class DetailItem(
     val soldQuantity: Int,
     @SerializedName("available_quantity")
     val availableQuantity: Int,
-    val pictures: List<ItemImages>
+    val pictures: List<ItemImages>,
+    val attributes: List<AttributesItems>
 ): Serializable

@@ -1,5 +1,6 @@
 package utn.frba.mobile.codechallenge.views.detail
 
+import utn.frba.mobile.codechallenge.models.AttributesItems
 import utn.frba.mobile.codechallenge.models.DetailItem
 
 interface DetailItemView {
@@ -34,4 +35,10 @@ interface DetailItemView {
     fun showStockQuantityBottomSheetSelector(maxQuantity: Int)
 
     fun showErrorForQuantitySelector()
+
+    fun setProductInfoDetails(attributes: List<AttributesItems>)
+
+    fun hideProductInfoDetails()
+
+    fun showMoreProductInfoMessage()
 }

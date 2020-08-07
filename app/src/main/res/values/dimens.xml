@@ -39,7 +39,10 @@
     <dimen name="main_item_detail_share_margins">30dp</dimen>
 
     <dimen name="like_and_share_detail_fragment_add_to_likes_margin">30dp</dimen>
+
     <dimen name="buttons_height">56dp</dimen>
+
+    <dimen name="product_info_item_height">56dp</dimen>
 
 
 </resources>

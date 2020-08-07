@@ -42,5 +42,7 @@
     <string name="detail_fragment_one_sold">%s vendido</string>
     <string name="detail_fragment_price">$ %s</string>
     <string name="detail_fragment_image_count_chip">%s / %d</string>
+    <string name="detail_fragment_more_product_details_message">Más detalles presionado.</string>
+    <string name="detail_fragment_see_more_product_info_button_text">Ver mas características</string>
 
 </resources>

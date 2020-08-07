@@ -35,10 +35,17 @@ class DetailItemPresenter(private val view: DetailItemView) {
         this.detailItem = detailItem
         view.stopProgressBar()
         view.setMainItemDetails(detailItem)
+
         if (detailItem.availableQuantity == 0) {
             view.showUnavailableStock()
         } else {
             view.setAvailableStock(detailItem.availableQuantity)
+        }
+
+        if (detailItem.attributes.isNotEmpty()) {
+            view.setProductInfoDetails(detailItem.attributes.filter { item -> attributesIdList.contains(item.id) })
+        } else {
+            view.hideProductInfoDetails()
         }
     }
 
@@ -93,5 +100,13 @@ class DetailItemPresenter(private val view: DetailItemView) {
         if (likedState) {
             view.setLikeStatus()
         }
+    }
+
+    fun onMoreProductInfoButtonClicked() {
+        view.showMoreProductInfoMessage()
+    }
+
+    companion object {
+        private val attributesIdList: List<String> = listOf("BRAND", "MODEL", "WEIGHT", "ITEM_CONDITION")
     }
 }

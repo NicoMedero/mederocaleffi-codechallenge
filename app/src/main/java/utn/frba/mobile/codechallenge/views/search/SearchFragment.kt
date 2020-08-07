@@ -42,7 +42,7 @@ class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
         itemListLayoutManager = LinearLayoutManager(requireContext())
 
         vRecyclerViewSearchFragment.apply {
-            this.layoutManager = itemListLayoutManager
+            layoutManager = itemListLayoutManager
             adapter = itemListAdapter
             addOnScrollListener(object: RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {

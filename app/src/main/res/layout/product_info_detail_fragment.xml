@@ -9,7 +9,10 @@
         android:id="@+id/vTitleProductInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_large"
         android:text="@string/detail_fragment_product_info_title"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_large_smaller"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,8 +22,21 @@
         android:id="@+id/vRecyclerViewProductInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vTitleProductInfo"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/vButtonMoreProductInfo"/>
+
+    <utn.frba.mobile.codechallenge.views.sharedCustomViews.impl.CustomButtonMoreInfo
+        android:id="@+id/vButtonMoreProductInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_large"
+        android:layout_marginBottom="@dimen/space_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vRecyclerViewProductInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

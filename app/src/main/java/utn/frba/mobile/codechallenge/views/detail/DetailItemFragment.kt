@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.detail_fragment.*
 import kotlinx.android.synthetic.main.like_and_share_detail_fragment.*
 import kotlinx.android.synthetic.main.stock_quantity_selector_detail_fragment.*
 import utn.frba.mobile.codechallenge.R
+import utn.frba.mobile.codechallenge.models.AttributesItems
 import utn.frba.mobile.codechallenge.models.DetailItem
 import utn.frba.mobile.codechallenge.models.ItemList
 import utn.frba.mobile.codechallenge.views.sharedCustomViews.CustomToolbarInterface
@@ -37,6 +38,10 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         super.onViewCreated(view, savedInstanceState)
         vToolbarDetailFragment.initWithLikeAndSearchButton(this)
         vMainItemDetailFragment.setPresenter(presenter)
+        vProductInfoContainer.apply {
+            setPresenter(presenter)
+            setButtonText(getString(R.string.detail_fragment_see_more_product_info_button_text))
+        }
         vAddToLikesButtonContainerDetailFragment.apply {
             setOnClickListener {
                 presenter.onLikeButtonClicked(vLikeButtonWithShareDetailFragment.isChecked)
@@ -180,6 +185,18 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putSerializable(DETAIL_ITEM_KEY, presenter.getDetailItemInstance())
         outState.putBoolean(LIKE_STATE_KEY, vLikeButtonWithShareDetailFragment.isChecked)
+    }
+
+    override fun setProductInfoDetails(attributes: List<AttributesItems>) {
+        vProductInfoContainer.loadAttributes(attributes)
+    }
+
+    override fun hideProductInfoDetails() {
+        vProductInfoContainer.visibility = View.GONE
+    }
+
+    override fun showMoreProductInfoMessage() {
+        Toast.makeText(requireContext(), getString(R.string.detail_fragment_more_product_details_message), Toast.LENGTH_SHORT).show()
     }
 
     override fun onPause() {

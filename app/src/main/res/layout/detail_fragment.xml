@@ -99,6 +99,11 @@
                 android:id="@+id/vLikeAndShareDetailFragment"
                 layout="@layout/like_and_share_detail_fragment"/>
 
+            <utn.frba.mobile.codechallenge.views.detail.customViews.impl.ProductInfoComponent
+                android:id="@+id/vProductInfoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
     </ScrollView>
