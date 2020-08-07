@@ -43,6 +43,7 @@ class MainItemDetailComponent @JvmOverloads constructor(
             vCarouselMainItemDetail.setImageListener(setCarouselImageListener(this.pictures))
             vCarouselMainItemDetail.addOnPageChangeListener(setOnChangeListener(this.pictures.size))
             vCarouselMainItemDetail.pageCount = detailItem.pictures.size
+            vImageCountMainItemDetail.text = context.getString(R.string.detail_fragment_image_count_chip, (vCarouselMainItemDetail.currentItem+1).toString(), this.pictures.size)
         }
 
     }
@@ -69,12 +70,11 @@ class MainItemDetailComponent @JvmOverloads constructor(
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
-
-                vImageCountMainItemDetail.text = context.getString(R.string.detail_fragment_image_count_chip, (position+1).toString(), picturesListSize)
+                //Do nothing
             }
 
             override fun onPageSelected(position: Int) {
-                //Do nothing
+                vImageCountMainItemDetail.text = context.getString(R.string.detail_fragment_image_count_chip, (position+1).toString(), picturesListSize)
             }
 
         }
