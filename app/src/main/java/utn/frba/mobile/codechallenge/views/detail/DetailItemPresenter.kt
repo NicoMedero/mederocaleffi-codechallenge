@@ -136,6 +136,9 @@ class DetailItemPresenter(private val view: DetailItemView) {
     }
 
     companion object {
-        private val attributesIdList: List<String> = listOf("BRAND", "MODEL", "WEIGHT", "ITEM_CONDITION")
+        private val attributesIdList: List<String> = listOf(
+            "BRAND", "MODEL", "WEIGHT", "ITEM_CONDITION", "SELLER_SKU",
+            "BATTERY_CAPACITY", "CARRIER","CPU_MODELS", "DISPLAY_SIZE", "INTERNAL_MEMORY"
+        )
     }
 }
