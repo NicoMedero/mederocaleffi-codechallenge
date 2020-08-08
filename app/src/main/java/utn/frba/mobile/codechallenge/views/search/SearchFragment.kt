@@ -17,7 +17,7 @@ import utn.frba.mobile.codechallenge.views.sharedCustomViews.CustomToolbarInterf
 class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
 
     private lateinit var presenter: SearchPresenter
-    private var itemList = ArrayList<ItemList>()
+    private var itemsList = ArrayList<ItemList>()
     private lateinit var itemListAdapter: ItemListAdapter
     private lateinit var itemListLayoutManager: LinearLayoutManager
 
@@ -38,7 +38,7 @@ class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
 
         vToolbarSearchFragment.initWithSearchView(this)
 
-        itemListAdapter = ItemListAdapter(itemList)
+        itemListAdapter = ItemListAdapter(itemsList)
         itemListLayoutManager = LinearLayoutManager(requireContext())
 
         vRecyclerViewSearchFragment.apply {
@@ -59,8 +59,8 @@ class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
 
         if (savedInstanceState != null) {
             val savedItemList: List<ItemList> = savedInstanceState.getSerializable(ITEMS_LIST_KEY) as List<ItemList>
-            itemList.clear()
-            itemList.addAll(savedItemList)
+            itemsList.clear()
+            itemsList.addAll(savedItemList)
             itemListAdapter.notifyDataSetChanged()
         }
     }
@@ -71,11 +71,11 @@ class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putSerializable(ITEMS_LIST_KEY, itemList)
+        outState.putSerializable(ITEMS_LIST_KEY, itemsList)
     }
 
     override fun clearData() {
-        itemList.clear()
+        itemsList.clear()
         itemListAdapter.notifyDataSetChanged()
     }
 
@@ -90,13 +90,13 @@ class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
     }
 
     override fun loadQueryResults(results: List<ItemList>) {
-        itemList.clear()
-        itemList.addAll(results)
+        itemsList.clear()
+        itemsList.addAll(results)
         itemListAdapter.notifyDataSetChanged()
     }
 
     override fun addItemsAtTheEnd(results: List<ItemList>) {
-        itemList.addAll(itemList.lastIndex, results)
+        itemsList.addAll(itemsList.lastIndex, results)
         itemListAdapter.notifyDataSetChanged()
     }
 
@@ -116,6 +116,16 @@ class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
 
     override fun noMoreItemsToShow() {
         Toast.makeText(requireContext(), getString(R.string.search_view_no_more_items_to_show_message), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun updateViewFromExtras(query: String?, item: ItemList?) {
+        presenter.onExtrasRetrieved(query, item, itemsList)
+    }
+
+    override fun updateItemsListWithItemLiked(itemsList: List<ItemList>) {
+        this.itemsList.clear()
+        this.itemsList.addAll(itemsList)
+        itemListAdapter.notifyDataSetChanged()
     }
 
     override fun unlikeItem() {

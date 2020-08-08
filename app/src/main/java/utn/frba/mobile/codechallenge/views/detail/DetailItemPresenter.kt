@@ -135,6 +135,17 @@ class DetailItemPresenter(private val view: DetailItemView) {
         view.showMoreProductInfoMessage()
     }
 
+    fun getItemState(isLiked: Boolean): ItemList? {
+        return if (detailItem != null) {
+            ItemList(
+                detailItem!!.id,
+                isLiked
+            )
+        } else {
+            null
+        }
+    }
+
     companion object {
         private val attributesIdList: List<String> = listOf(
             "BRAND", "MODEL", "WEIGHT", "ITEM_CONDITION", "SELLER_SKU",

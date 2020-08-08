@@ -7,4 +7,6 @@ data class SellerReputation(
     @SerializedName("power_seller_status")
     val sellerStatus: String,
     val transactions: Transactions
-) : Serializable
+) : Serializable {
+    constructor(): this("", Transactions())
+}

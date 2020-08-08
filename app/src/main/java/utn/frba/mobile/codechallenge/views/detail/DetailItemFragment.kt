@@ -85,9 +85,8 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         Toast.makeText(context, "Query: $query", Toast.LENGTH_SHORT).show()
     }
 
-    override fun getIdIfItemWasLiked(): Int? {
-        //TODO: presenter.getId()
-        return null
+    override fun getItemForResult(): ItemList? {
+        return presenter.getItemState(vLikeButtonWithShareDetailFragment.isChecked)
     }
 
     override fun setLikeStatus() {
@@ -229,5 +228,6 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         private const val DETAIL_ITEM_KEY = "detail_item"
         private const val SELLER_DETAIL_KEY = "seller_detail"
         private const val LIKE_STATE_KEY = "like_state"
+        const val QUERY_FROM_DETAIL_VIEW = "query_from_detail_view"
     }
 }

@@ -8,4 +8,6 @@ data class Seller(
     val nickname: String,
     @SerializedName("seller_reputation")
     val reputation: SellerReputation
-) : Serializable
+) : Serializable {
+    constructor() : this(0, "", SellerReputation())
+}

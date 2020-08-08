@@ -2,9 +2,10 @@ package utn.frba.mobile.codechallenge.views.detail
 
 import utn.frba.mobile.codechallenge.models.AttributesItems
 import utn.frba.mobile.codechallenge.models.DetailItem
+import utn.frba.mobile.codechallenge.models.ItemList
 
 interface DetailItemView {
-    fun getIdIfItemWasLiked(): Int?
+    fun getItemForResult(): ItemList?
 
     fun setLikeStatus()
 

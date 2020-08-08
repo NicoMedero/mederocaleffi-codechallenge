@@ -21,4 +21,8 @@ interface SearchView {
     fun onFailureGettingMoreItems()
 
     fun noMoreItemsToShow()
+
+    fun updateViewFromExtras(query: String?, item: ItemList?)
+
+    fun updateItemsListWithItemLiked(itemsList: List<ItemList>)
 }

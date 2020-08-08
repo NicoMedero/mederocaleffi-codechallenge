@@ -9,4 +9,9 @@ data class ItemList (
     val price: Float,
     val thumbnail: String,
     var like: Boolean = false
-) : Serializable
+) : Serializable {
+    constructor(
+        id: String,
+        like: Boolean
+    ) : this (id, "", Seller(), 0F, "", like)
+}

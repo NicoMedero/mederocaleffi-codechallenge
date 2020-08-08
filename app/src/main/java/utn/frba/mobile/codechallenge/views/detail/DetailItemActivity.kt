@@ -19,26 +19,30 @@ class DetailItemActivity : AppCompatActivity() {
             detailItemView = detailItemFragment
             supportFragmentManager
                 .beginTransaction()
+                .add(detailItemFragment, DETAIL_FRAGMENT_TAG)
                 .replace(R.id.vBaseActivityContainer, detailItemFragment)
                 .commitNow()
+        } else {
+            detailItemView = supportFragmentManager.findFragmentByTag(DETAIL_FRAGMENT_TAG) as DetailItemView
         }
     }
 
     override fun onBackPressed() {
-        val itemListId = detailItemView?.getIdIfItemWasLiked()
+        val itemList = detailItemView?.getItemForResult()
         val returnIntent = Intent()
-        if (itemListId == null) {
+        if (itemList == null) {
             setResult(Activity.RESULT_CANCELED, returnIntent)
             finish()
         } else {
-            returnIntent.putExtra(ITEM_LIST_DATA, itemListId)
+            returnIntent.putExtra(ITEM_LIST_DATA, itemList)
             setResult(Activity.RESULT_OK, returnIntent)
             finish()
         }
     }
 
     companion object {
+        private const val DETAIL_FRAGMENT_TAG = "detail_fragment"
         const val ITEM_LIST_DATA = "item_list_data"
-        const val DETAIL_ITEM_ACTIVITY_CODE = 1
+        const val DETAIL_ITEM_ACTIVITY_CODE = 9000
     }
 }

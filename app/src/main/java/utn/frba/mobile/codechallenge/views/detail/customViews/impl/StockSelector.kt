@@ -33,9 +33,9 @@ class StockSelector(
 
         while (iterator <= limit) {
             /**
-             * All this TextViews must be a custom
+             * All this TextViews could be a custom
              * to hold their position and know the value
-             * when the user clicks one.
+             * when the user clicks on one.
              */
             val textView = TextView.inflate(requireContext(), R.layout.stock_selector_text_view, null)
             textView.vInsideItem.text = setItemText(iterator)
