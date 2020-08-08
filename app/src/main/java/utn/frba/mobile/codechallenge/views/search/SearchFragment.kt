@@ -59,6 +59,7 @@ class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
 
         if (savedInstanceState != null) {
             val savedItemList: List<ItemList> = savedInstanceState.getSerializable(ITEMS_LIST_KEY) as List<ItemList>
+            itemList.clear()
             itemList.addAll(savedItemList)
             itemListAdapter.notifyDataSetChanged()
         }
