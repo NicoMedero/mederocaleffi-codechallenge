@@ -128,6 +128,10 @@ class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
         itemListAdapter.notifyDataSetChanged()
     }
 
+    override fun setQueryInSearchView(query: String) {
+        vToolbarSearchFragment.setSearchText(query)
+    }
+
     override fun unlikeItem() {
         //Do nothing
     }

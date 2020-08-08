@@ -46,6 +46,7 @@ class SearchPresenter(private val view: SearchView) {
     fun onExtrasRetrieved(query: String?, item: ItemList?, itemsList: List<ItemList>) {
         if (!query.isNullOrEmpty()) {
             onQuerySubmit(query)
+            view.setQueryInSearchView(query)
             return
         }
 

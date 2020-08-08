@@ -1,5 +1,6 @@
 package utn.frba.mobile.codechallenge.views.detail
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -82,7 +83,10 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
     }
 
     override fun queryTextSubmitted(query: String) {
-        Toast.makeText(context, "Query: $query", Toast.LENGTH_SHORT).show()
+        val returnIntent = Intent()
+        returnIntent.putExtra(QUERY_FROM_DETAIL_VIEW, query)
+        requireActivity().setResult(Activity.RESULT_OK, returnIntent)
+        requireActivity().finish()
     }
 
     override fun getItemForResult(): ItemList? {

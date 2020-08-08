@@ -105,4 +105,8 @@ class CustomToolbar @JvmOverloads constructor(
         val likeButton = vCustomToolbar.menu.findItem(R.id.vLikeButtonDetailFragment)
         likeButton.isVisible = false
     }
+
+    fun setSearchText(query: String) {
+        vSearchViewCustomToolbar.setQuery(query, false)
+    }
 }

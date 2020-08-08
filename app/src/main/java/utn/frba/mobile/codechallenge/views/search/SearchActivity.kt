@@ -35,7 +35,7 @@ class SearchActivity : AppCompatActivity() {
             val bundle = data?.extras
             bundle?.run {
                 val query = getString(QUERY_FROM_DETAIL_VIEW)
-                val item: ItemList? = getSerializable(ITEM_LIST_DATA) as ItemList
+                val item: ItemList? = getSerializable(ITEM_LIST_DATA) as ItemList?
                 searchView?.updateViewFromExtras(query, item)
             }
         }

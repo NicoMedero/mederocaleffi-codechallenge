@@ -25,4 +25,6 @@ interface SearchView {
     fun updateViewFromExtras(query: String?, item: ItemList?)
 
     fun updateItemsListWithItemLiked(itemsList: List<ItemList>)
+
+    fun setQueryInSearchView(query: String)
 }
