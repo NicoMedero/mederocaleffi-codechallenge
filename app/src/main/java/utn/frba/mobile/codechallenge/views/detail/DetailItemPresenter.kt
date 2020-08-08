@@ -11,6 +11,7 @@ class DetailItemPresenter(private val view: DetailItemView) {
 
     private val repository: DetailItemRepository = DefaultDetailItemRepository()
     private var detailItem: DetailItem? = null
+    private var sellerDetails: Seller? = null
 
     fun setItemData(itemData: ItemList?) {
         if (itemData == null) {
@@ -18,11 +19,28 @@ class DetailItemPresenter(private val view: DetailItemView) {
             return
         }
 
-        itemData.run {
-            setLikeStatus(this.like)
-            repository.searchItemById(this.id, { onSuccess(it) }, { onFailure() })
-            repository.searchSellerById(this.seller.id, { onSuccess(it) }, { onFailureGettingSellerData() })
+        if (detailItem == null) {
+            itemData.run {
+                setLikeStatus(this.like)
+                repository.searchItemById(this.id, { onSuccess(it) }, { onFailure() })
+            }
+        } else {
+            restoreDetailItemFromRotate(detailItem!!)
         }
+
+        if (sellerDetails == null) {
+            repository.searchSellerById(itemData.seller.id, { onSuccess(it) }, { onFailureGettingSellerData() })
+        } else {
+            restoreSellerDetailsFromRotate(sellerDetails!!)
+        }
+    }
+
+    private fun restoreDetailItemFromRotate(detailItem: DetailItem) {
+        onSuccess(detailItem)
+    }
+
+    private fun restoreSellerDetailsFromRotate(sellerDetails: Seller) {
+        onSuccess(sellerDetails)
     }
 
     private fun setLikeStatus(likeStatus: Boolean) {
@@ -50,6 +68,7 @@ class DetailItemPresenter(private val view: DetailItemView) {
     }
 
     private fun onSuccess(seller: Seller) {
+        sellerDetails = seller
         if (seller.nickname.isNotEmpty()) {
             view.setSellerName(seller.nickname)
         }
@@ -92,13 +111,23 @@ class DetailItemPresenter(private val view: DetailItemView) {
         return detailItem
     }
 
+    fun getSellerDetailInstance(): Serializable? {
+        return sellerDetails
+    }
+
     fun restoreDetailItemState(detailItem: DetailItem?) {
         this.detailItem = detailItem
+    }
+
+    fun restoreSellerDetailState(seller: Seller?) {
+        sellerDetails = seller
     }
 
     fun restoreLikedState(likedState: Boolean) {
         if (likedState) {
             view.setLikeStatus()
+        } else {
+            view.setNotLikeStatus()
         }
     }
 

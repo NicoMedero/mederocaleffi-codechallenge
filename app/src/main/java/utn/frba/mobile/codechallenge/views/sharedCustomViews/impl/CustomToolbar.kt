@@ -93,6 +93,14 @@ class CustomToolbar @JvmOverloads constructor(
         }
     }
 
+    fun setNotLikeStatus() {
+        val likeButton = vCustomToolbar.menu.findItem(R.id.vLikeButtonDetailFragment)
+        likeButton.apply {
+            this.isChecked = false
+            this.setIcon(R.drawable.ic_not_like_black)
+        }
+    }
+
     fun hideLikeButton() {
         val likeButton = vCustomToolbar.menu.findItem(R.id.vLikeButtonDetailFragment)
         likeButton.isVisible = false

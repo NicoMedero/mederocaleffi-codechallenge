@@ -8,6 +8,8 @@ interface DetailItemView {
 
     fun setLikeStatus()
 
+    fun setNotLikeStatus()
+
     fun stopProgressBar()
 
     fun setMainItemDetails(detailItem: DetailItem)

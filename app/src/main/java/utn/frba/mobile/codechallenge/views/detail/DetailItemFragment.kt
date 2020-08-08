@@ -14,6 +14,7 @@ import utn.frba.mobile.codechallenge.R
 import utn.frba.mobile.codechallenge.models.AttributesItems
 import utn.frba.mobile.codechallenge.models.DetailItem
 import utn.frba.mobile.codechallenge.models.ItemList
+import utn.frba.mobile.codechallenge.models.Seller
 import utn.frba.mobile.codechallenge.views.sharedCustomViews.CustomToolbarInterface
 import utn.frba.mobile.codechallenge.views.detail.DetailItemActivity.Companion.ITEM_LIST_DATA
 import utn.frba.mobile.codechallenge.views.detail.customViews.impl.StockSelector
@@ -61,12 +62,13 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         vTextForLikeButonWithShareDetailFragment.text = getString(R.string.detail_fragment_unliked_item_text)
         vTextForShareButonWithLikeDetailFragment.text = getString(R.string.detail_fragment_share_button_text)
 
-        presenter.setItemData(arguments?.getSerializable(ITEM_LIST_DATA) as ItemList)
-
         if (savedInstanceState != null) {
             presenter.restoreDetailItemState(savedInstanceState.getSerializable(DETAIL_ITEM_KEY) as DetailItem)
             presenter.restoreLikedState(savedInstanceState.getBoolean(LIKE_STATE_KEY))
+            presenter.restoreSellerDetailState(savedInstanceState.getSerializable(SELLER_DETAIL_KEY) as Seller)
         }
+
+        presenter.setItemData(arguments?.getSerializable(ITEM_LIST_DATA) as ItemList)
     }
 
     override fun unlikeItem() {
@@ -92,6 +94,11 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         vToolbarDetailFragment.setLikeStatus()
         vLikeButtonWithShareDetailFragment.isChecked = true
         vTextForLikeButonWithShareDetailFragment.text = getString(R.string.detail_fragment_liked_item_text)
+    }
+
+    override fun setNotLikeStatus() {
+        unlikeItem()
+        vToolbarDetailFragment.setNotLikeStatus()
     }
 
     override fun stopProgressBar() {
@@ -184,6 +191,7 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putSerializable(DETAIL_ITEM_KEY, presenter.getDetailItemInstance())
+        outState.putSerializable(SELLER_DETAIL_KEY, presenter.getSellerDetailInstance())
         outState.putBoolean(LIKE_STATE_KEY, vLikeButtonWithShareDetailFragment.isChecked)
     }
 
@@ -219,6 +227,7 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
         }
         private const val SHARE_INTENT_TYPE = "text/plain"
         private const val DETAIL_ITEM_KEY = "detail_item"
+        private const val SELLER_DETAIL_KEY = "seller_detail"
         private const val LIKE_STATE_KEY = "like_state"
     }
 }
