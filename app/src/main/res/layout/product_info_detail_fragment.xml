@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/vButtonMoreProductInfo"/>
 
-    <utn.frba.mobile.codechallenge.views.sharedCustomViews.impl.CustomButtonMoreInfo
+    <mederocaleffi.nicolas.mobile.codechallenge.views.sharedCustomViews.impl.CustomButtonMoreInfo
         android:id="@+id/vButtonMoreProductInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

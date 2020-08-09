@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <utn.frba.mobile.codechallenge.views.sharedCustomViews.impl.CustomToolbar
+    <mederocaleffi.nicolas.mobile.codechallenge.views.sharedCustomViews.impl.CustomToolbar
         android:id="@+id/vToolbarDetailFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <utn.frba.mobile.codechallenge.views.detail.customViews.impl.MainItemDetailComponent
+            <mederocaleffi.nicolas.mobile.codechallenge.views.detail.customViews.impl.MainItemDetailComponent
                 android:id="@+id/vMainItemDetailFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -99,7 +99,7 @@
                 android:id="@+id/vLikeAndShareDetailFragment"
                 layout="@layout/like_and_share_detail_fragment"/>
 
-            <utn.frba.mobile.codechallenge.views.detail.customViews.impl.ProductInfoComponent
+            <mederocaleffi.nicolas.mobile.codechallenge.views.detail.customViews.impl.ProductInfoComponent
                 android:id="@+id/vProductInfoContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
