@@ -23,6 +23,8 @@ class DefaultSearchRepository : BaseRepository(), SearchRepository {
                 if (response.code() == OK_HTTP && response.body() != null) {
                     val model = response.body() as SearchModel
                     onSuccess.invoke(model)
+                } else {
+                    onFailure.invoke()
                 }
             }
             override fun onFailure(call: Call<SearchModel>, t: Throwable) {

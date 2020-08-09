@@ -22,6 +22,8 @@ class DefaultDetailItemRepository : BaseRepository(), DetailItemRepository{
             override fun onResponse(call: Call<DetailItem>, response: Response<DetailItem>) {
                 if (response.body() != null && response.code() == OK_HTTP){
                     onSuccess.invoke(response.body() as DetailItem)
+                } else {
+                    onFailure.invoke()
                 }
             }
 
