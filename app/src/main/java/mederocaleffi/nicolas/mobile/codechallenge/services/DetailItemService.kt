@@ -6,6 +6,9 @@ import retrofit2.http.Path
 import mederocaleffi.nicolas.mobile.codechallenge.models.DetailItem
 import mederocaleffi.nicolas.mobile.codechallenge.models.Seller
 
+/**
+ * Service for getting detail info of an item and it's seller
+ */
 interface DetailItemService {
 
     @GET("items/{id}")

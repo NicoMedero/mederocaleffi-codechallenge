@@ -10,6 +10,13 @@ import mederocaleffi.nicolas.mobile.codechallenge.R
 import mederocaleffi.nicolas.mobile.codechallenge.models.AttributesItems
 import mederocaleffi.nicolas.mobile.codechallenge.views.detail.DetailItemPresenter
 
+/**
+ * This class manage the product info by using a RecyclerView with
+ * a list of attributes of type: List<AttributesItem>
+ *
+ * The ProductInfoItemAdapter manage the color of the layout behind
+ * each attribute.
+ */
 class ProductInfoComponent @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

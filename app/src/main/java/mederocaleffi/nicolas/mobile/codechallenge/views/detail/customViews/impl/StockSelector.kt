@@ -11,6 +11,12 @@ import kotlinx.android.synthetic.main.bottom_sheet_stock_quantity_layout.view.*
 import kotlinx.android.synthetic.main.stock_selector_text_view.view.*
 import mederocaleffi.nicolas.mobile.codechallenge.R
 
+/**
+ * The stock selector is a button that displays:
+ * Quantity default and Available Quantity.
+ *
+ * @param maxQuantity is the available for the item. It comes from the view.
+ */
 class StockSelector(
     private val maxQuantity: Int
 ) : BottomSheetDialogFragment() {

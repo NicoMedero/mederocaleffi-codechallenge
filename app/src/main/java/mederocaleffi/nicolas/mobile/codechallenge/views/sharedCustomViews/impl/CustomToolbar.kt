@@ -10,6 +10,13 @@ import kotlinx.android.synthetic.main.custom_toolbar.view.*
 import mederocaleffi.nicolas.mobile.codechallenge.R
 import mederocaleffi.nicolas.mobile.codechallenge.views.sharedCustomViews.CustomToolbarInterface
 
+/**
+ * This custom toolbar is used to show two different types of toolbar.
+ * One: Only the search view widget
+ * Two: The Like state button and Search icon.
+ *
+ * Depends on the view to call initWithSearchView or initWithLikeAndSearchButtons
+ */
 class CustomToolbar @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -36,7 +43,7 @@ class CustomToolbar @JvmOverloads constructor(
         }
     }
 
-    fun initWithLikeAndSearchButton(view: CustomToolbarInterface) {
+    fun initWithLikeAndSearchButtons(view: CustomToolbarInterface) {
         this.view = view
 
         vCustomToolbar.inflateMenu(R.menu.custom_toolbar_menu)

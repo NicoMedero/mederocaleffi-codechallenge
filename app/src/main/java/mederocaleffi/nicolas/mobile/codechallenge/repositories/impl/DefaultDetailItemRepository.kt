@@ -8,6 +8,11 @@ import mederocaleffi.nicolas.mobile.codechallenge.models.Seller
 import mederocaleffi.nicolas.mobile.codechallenge.repositories.DetailItemRepository
 import mederocaleffi.nicolas.mobile.codechallenge.services.DetailItemService
 
+/**
+ * This repository implements the necessary calls
+ * to get detail information from an Item selected and
+ * the seller of that item.
+ */
 class DefaultDetailItemRepository : BaseRepository(), DetailItemRepository{
 
     override fun searchItemById(

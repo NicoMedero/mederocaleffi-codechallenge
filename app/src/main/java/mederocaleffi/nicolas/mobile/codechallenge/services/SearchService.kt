@@ -5,6 +5,11 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import mederocaleffi.nicolas.mobile.codechallenge.models.SearchModel
 
+/**
+ * Service for getting items results by name.
+ * @query "q" is the name of the item.
+ * @query "offset" is for getting more by paging
+ */
 interface SearchService {
 
     @GET("sites/MLA/search")

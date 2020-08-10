@@ -20,6 +20,9 @@ import mederocaleffi.nicolas.mobile.codechallenge.views.sharedCustomViews.Custom
 import mederocaleffi.nicolas.mobile.codechallenge.views.detail.DetailItemActivity.Companion.ITEM_LIST_DATA
 import mederocaleffi.nicolas.mobile.codechallenge.views.detail.customViews.impl.StockSelector
 
+/**
+ * This is the main view for Item details.
+ */
 class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
 
     private lateinit var presenter: DetailItemPresenter
@@ -38,7 +41,7 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vToolbarDetailFragment.initWithLikeAndSearchButton(this)
+        vToolbarDetailFragment.initWithLikeAndSearchButtons(this)
         vMainItemDetailFragment.setPresenter(presenter)
         vProductInfoContainer.apply {
             setPresenter(presenter)

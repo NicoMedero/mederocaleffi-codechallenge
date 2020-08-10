@@ -7,6 +7,10 @@ import mederocaleffi.nicolas.mobile.codechallenge.models.SearchModel
 import mederocaleffi.nicolas.mobile.codechallenge.repositories.SearchRepository
 import mederocaleffi.nicolas.mobile.codechallenge.services.SearchService
 
+/**
+ * This repository implements the call for search items by name.
+ * The result is a SearchModel with paging and a list of items.
+ */
 class DefaultSearchRepository : BaseRepository(), SearchRepository {
 
     override fun searchByName(

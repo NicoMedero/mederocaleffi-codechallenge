@@ -49,6 +49,11 @@ class DetailItemPresenter(private val view: DetailItemView) {
         }
     }
 
+    /**
+     * To improve less api calls, we can save an instance of detailItem.
+     * Then when the user rotates the device, it's not necessary to get it again
+     * from the server.
+     */
     private fun onSuccess(detailItem: DetailItem) {
         this.detailItem = detailItem
         view.stopProgressBar()
@@ -67,6 +72,11 @@ class DetailItemPresenter(private val view: DetailItemView) {
         }
     }
 
+    /**
+     * To improve less api calls, we can save an instance of the item seller.
+     * Then when the user rotates the device, it's not necessary to get it again
+     * from the server.
+     */
     private fun onSuccess(seller: Seller) {
         sellerDetails = seller
         if (seller.nickname.isNotEmpty()) {

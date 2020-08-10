@@ -29,6 +29,16 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * This method is used to manage the result from the Detail View.
+     *
+     * @param requestCode is the code to identify the Detail Activity
+     *
+     * Inside the Intent Extras we'll find:
+     * - Query: it will be not null if the user executes a query inside detail fragment.
+     * - ItemList: it will be not null if the user clicks the back button and it will have
+     *      data such as ID and Like state to update the list in the Search View.
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == DETAIL_ITEM_ACTIVITY_CODE) {

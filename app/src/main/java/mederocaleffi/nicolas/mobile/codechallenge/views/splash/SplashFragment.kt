@@ -10,6 +10,13 @@ import androidx.fragment.app.Fragment
 import mederocaleffi.nicolas.mobile.codechallenge.R
 import mederocaleffi.nicolas.mobile.codechallenge.views.search.SearchActivity
 
+/**
+ * This splash fragment is just a view that shows one time
+ * when the app starts.
+ *
+ * It could be used to load some data before send the user
+ * to the search view, but right now it just shows the logo.
+ */
 class SplashFragment : Fragment(), SplashView {
 
     private lateinit var presenter: SplashPresenter

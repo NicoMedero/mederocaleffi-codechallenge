@@ -14,6 +14,16 @@ import mederocaleffi.nicolas.mobile.codechallenge.models.DetailItem
 import mederocaleffi.nicolas.mobile.codechallenge.models.ItemImages
 import mederocaleffi.nicolas.mobile.codechallenge.views.detail.DetailItemPresenter
 
+/**
+ * This CustomView is used to load:
+ * - pictures of the item
+ * - condition: new | used
+ * - item title
+ * - item price
+ * - quantity sold
+ *
+ * And it manages the Carousel for the pictures.
+ */
 class MainItemDetailComponent @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

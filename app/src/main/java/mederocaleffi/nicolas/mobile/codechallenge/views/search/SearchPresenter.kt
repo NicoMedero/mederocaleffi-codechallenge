@@ -43,25 +43,34 @@ class SearchPresenter(private val view: SearchView) {
         view.addItemsAtTheEnd(searchModel.results)
     }
 
-    fun onExtrasRetrieved(query: String?, item: ItemList?, itemsList: List<ItemList>) {
+    /**
+     * This method is used to update the search view when the user comes from detail view.
+     *
+     * @param query, if it's not null, the presenter must execute the search as usual and nothing else.
+     * @param receivedItem, if it's not null, the presenter must to analyze if the liked state is different
+     *      from the like state of the item inside itemsList
+     * @param itemsList, is the actual list from the search view. The presenter must use it to find
+     *      if there's any change between the Item received from the detail view.
+     */
+    fun onExtrasRetrieved(query: String?, receivedItem: ItemList?, itemsList: List<ItemList>) {
         if (!query.isNullOrEmpty()) {
             onQuerySubmit(query)
             view.setQueryInSearchView(query)
             return
         }
 
-        if (item != null) {
+        if (receivedItem != null) {
             view.showProgressBar()
 
             val itemsListToUpdate = itemsList.toMutableList()
 
-            val itemToUpdate = itemsListToUpdate.find { itemList -> itemList.id == item.id }
+            val itemToUpdate = itemsListToUpdate.find { itemList -> itemList.id == receivedItem.id }
 
-            if (itemToUpdate != null && itemToUpdate.like != item.like) {
-                val itemIndex = itemsListToUpdate.indexOf(itemToUpdate)
+            if (itemToUpdate != null && itemToUpdate.like != receivedItem.like) {
+                val itemToUpdateIndex = itemsListToUpdate.indexOf(itemToUpdate)
 
                 itemToUpdate.like = !itemToUpdate.like
-                itemsListToUpdate[itemIndex] = itemToUpdate
+                itemsListToUpdate[itemToUpdateIndex] = itemToUpdate
 
                 view.updateItemsListWithItemLiked(itemsListToUpdate.toList())
             }

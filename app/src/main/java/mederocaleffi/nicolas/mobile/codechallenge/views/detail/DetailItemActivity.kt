@@ -27,6 +27,10 @@ class DetailItemActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * This is used to get the ID and the like state of the item,
+     * and send it to SearchFragment to update the view if the item was liked.
+     */
     override fun onBackPressed() {
         val itemList = detailItemView?.getItemForResult()
         val returnIntent = Intent()
