@@ -7,9 +7,11 @@ import mederocaleffi.nicolas.mobile.codechallenge.repositories.DetailItemReposit
 import mederocaleffi.nicolas.mobile.codechallenge.repositories.impl.DefaultDetailItemRepository
 import java.io.Serializable
 
-class DetailItemPresenter(private val view: DetailItemView) {
+class DetailItemPresenter(
+    private val view: DetailItemView,
+    private val repository: DetailItemRepository
+) : DetailItemPresenterInterface {
 
-    private val repository: DetailItemRepository = DefaultDetailItemRepository()
     private var detailItem: DetailItem? = null
     private var sellerDetails: Seller? = null
 
@@ -22,14 +24,14 @@ class DetailItemPresenter(private val view: DetailItemView) {
         if (detailItem == null) {
             itemData.run {
                 setLikeStatus(this.like)
-                repository.searchItemById(this.id, { onSuccess(it) }, { onFailure() })
+                repository.searchItemById(this.id, this@DetailItemPresenter)
             }
         } else {
             restoreDetailItemFromRotate(detailItem!!)
         }
 
         if (sellerDetails == null) {
-            repository.searchSellerById(itemData.seller.id, { onSuccess(it) }, { onFailureGettingSellerData() })
+            repository.searchSellerById(itemData.seller.id, this)
         } else {
             restoreSellerDetailsFromRotate(sellerDetails!!)
         }
@@ -54,7 +56,7 @@ class DetailItemPresenter(private val view: DetailItemView) {
      * Then when the user rotates the device, it's not necessary to get it again
      * from the server.
      */
-    private fun onSuccess(detailItem: DetailItem) {
+    override fun onSuccess(detailItem: DetailItem) {
         this.detailItem = detailItem
         view.stopProgressBar()
         view.setMainItemDetails(detailItem)
@@ -77,7 +79,7 @@ class DetailItemPresenter(private val view: DetailItemView) {
      * Then when the user rotates the device, it's not necessary to get it again
      * from the server.
      */
-    private fun onSuccess(seller: Seller) {
+    override fun onSuccess(seller: Seller) {
         sellerDetails = seller
         if (seller.nickname.isNotEmpty()) {
             view.setSellerName(seller.nickname)
@@ -89,11 +91,11 @@ class DetailItemPresenter(private val view: DetailItemView) {
         }
     }
 
-    private fun onFailure() {
+    override fun onFailure() {
         view.showLoadingItemDataError()
     }
 
-    private fun onFailureGettingSellerData() {
+    override fun onFailureGettingSellerData() {
         view.showGetSellerInfoError()
     }
 
@@ -162,4 +164,14 @@ class DetailItemPresenter(private val view: DetailItemView) {
             "BATTERY_CAPACITY", "CARRIER","CPU_MODELS", "DISPLAY_SIZE", "INTERNAL_MEMORY"
         )
     }
+}
+
+interface DetailItemPresenterInterface{
+    fun onSuccess(detailItem: DetailItem)
+
+    fun onSuccess(seller: Seller)
+
+    fun onFailure()
+
+    fun onFailureGettingSellerData()
 }

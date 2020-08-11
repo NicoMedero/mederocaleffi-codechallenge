@@ -7,6 +7,7 @@ import mederocaleffi.nicolas.mobile.codechallenge.models.DetailItem
 import mederocaleffi.nicolas.mobile.codechallenge.models.Seller
 import mederocaleffi.nicolas.mobile.codechallenge.repositories.DetailItemRepository
 import mederocaleffi.nicolas.mobile.codechallenge.services.DetailItemService
+import mederocaleffi.nicolas.mobile.codechallenge.views.detail.DetailItemPresenterInterface
 
 /**
  * This repository implements the necessary calls
@@ -15,42 +16,40 @@ import mederocaleffi.nicolas.mobile.codechallenge.services.DetailItemService
  */
 class DefaultDetailItemRepository : BaseRepository(), DetailItemRepository{
 
-    override fun searchItemById(
-        id: String,
-        onSuccess: (DetailItem) -> Unit?,
-        onFailure: () -> Unit
-    ) {
+    override fun searchItemById(id: String, presenter: DetailItemPresenterInterface) {
         val service = retrofit.create(DetailItemService::class.java)
         val call = service.getItemsById(id)
 
         call.enqueue(object: Callback<DetailItem>{
             override fun onResponse(call: Call<DetailItem>, response: Response<DetailItem>) {
                 if (response.body() != null && response.code() == OK_HTTP){
-                    onSuccess.invoke(response.body() as DetailItem)
+                    presenter.onSuccess(response.body() as DetailItem)
                 } else {
-                    onFailure.invoke()
+                    presenter.onFailure()
                 }
             }
 
             override fun onFailure(call: Call<DetailItem>, t: Throwable) {
-                onFailure.invoke()
+                presenter.onFailure()
             }
         })
     }
 
-    override fun searchSellerById(id: Int, onSuccess: (Seller) -> Unit?, onFailure: () -> Unit) {
+    override fun searchSellerById(id: Int, presenter: DetailItemPresenterInterface) {
         val service = retrofit.create(DetailItemService::class.java)
         val call = service.getSellerById(id)
 
         call.enqueue(object: Callback<Seller> {
             override fun onResponse(call: Call<Seller>, response: Response<Seller>) {
                 if (response.body() != null && response.code() == OK_HTTP){
-                    onSuccess.invoke(response.body() as Seller)
+                    presenter.onSuccess(response.body() as Seller)
+                } else {
+                    presenter.onFailureGettingSellerData()
                 }
             }
 
             override fun onFailure(call: Call<Seller>, t: Throwable) {
-                onFailure.invoke()
+                presenter.onFailureGettingSellerData()
             }
         })
     }

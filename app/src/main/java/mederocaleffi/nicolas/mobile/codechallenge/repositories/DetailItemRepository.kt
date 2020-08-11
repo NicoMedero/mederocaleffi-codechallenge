@@ -1,19 +1,16 @@
 package mederocaleffi.nicolas.mobile.codechallenge.repositories
 
-import mederocaleffi.nicolas.mobile.codechallenge.models.DetailItem
-import mederocaleffi.nicolas.mobile.codechallenge.models.Seller
+import mederocaleffi.nicolas.mobile.codechallenge.views.detail.DetailItemPresenterInterface
 
 interface DetailItemRepository {
 
     fun searchItemById(
         id: String,
-        onSuccess: (DetailItem) -> Unit?,
-        onFailure: () -> Unit
+        presenter: DetailItemPresenterInterface
     )
 
     fun searchSellerById(
         id: Int,
-        onSuccess: (Seller) -> Unit?,
-        onFailure: () -> Unit
+        presenter: DetailItemPresenterInterface
     )
 }

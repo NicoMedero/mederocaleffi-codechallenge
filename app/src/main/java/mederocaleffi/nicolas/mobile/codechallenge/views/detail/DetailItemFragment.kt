@@ -16,6 +16,7 @@ import mederocaleffi.nicolas.mobile.codechallenge.models.AttributesItems
 import mederocaleffi.nicolas.mobile.codechallenge.models.DetailItem
 import mederocaleffi.nicolas.mobile.codechallenge.models.ItemList
 import mederocaleffi.nicolas.mobile.codechallenge.models.Seller
+import mederocaleffi.nicolas.mobile.codechallenge.repositories.impl.DefaultDetailItemRepository
 import mederocaleffi.nicolas.mobile.codechallenge.views.sharedCustomViews.CustomToolbarInterface
 import mederocaleffi.nicolas.mobile.codechallenge.views.detail.DetailItemActivity.Companion.ITEM_LIST_DATA
 import mederocaleffi.nicolas.mobile.codechallenge.views.detail.customViews.impl.StockSelector
@@ -30,7 +31,7 @@ class DetailItemFragment : Fragment(), DetailItemView, CustomToolbarInterface {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        presenter = DetailItemPresenter(this)
+        presenter = DetailItemPresenter(this, DefaultDetailItemRepository())
     }
 
     override fun onCreateView(
