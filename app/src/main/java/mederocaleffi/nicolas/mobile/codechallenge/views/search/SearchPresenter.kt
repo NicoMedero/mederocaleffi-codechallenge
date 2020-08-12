@@ -5,17 +5,18 @@ import mederocaleffi.nicolas.mobile.codechallenge.models.SearchModel
 import mederocaleffi.nicolas.mobile.codechallenge.repositories.SearchRepository
 import mederocaleffi.nicolas.mobile.codechallenge.repositories.impl.DefaultSearchRepository
 
-class SearchPresenter(private val view: SearchView) {
-
-    private val repository: SearchRepository = DefaultSearchRepository()
+class SearchPresenter(
+    private val view: SearchView,
+    private val repository: SearchRepository
+) : SearchPresenterInterface {
 
     fun onQuerySubmit(query: String) {
         view.showProgressBar()
         view.clearData()
-        repository.searchByName(query, null, { onSuccessQuery(it) }, { onFailureQuery() })
+        repository.searchByName(query, null, this)
     }
 
-    private fun onSuccessQuery(searchModel: SearchModel) {
+    override fun onSuccessQuery(searchModel: SearchModel) {
         if (searchModel.results.isNullOrEmpty()) {
             view.emptyResultsFromQuery()
             return
@@ -25,22 +26,26 @@ class SearchPresenter(private val view: SearchView) {
         view.stopProgressBar()
     }
 
-    private fun onFailureQuery() {
+    override fun onFailureQuery() {
         view.stopProgressBar()
         view.onFailureQuery()
     }
 
     fun getMoreItems(offset: Int, query: String) {
-        repository.searchByName(query, offset, { onSuccessGetMoreItems(it) }, { view.onFailureGettingMoreItems() })
+        repository.searchByName(query, offset, this)
     }
 
-    private fun onSuccessGetMoreItems(searchModel: SearchModel) {
+    override fun onSuccessGetMoreItems(searchModel: SearchModel) {
         if (searchModel.results.isNullOrEmpty()) {
             view.noMoreItemsToShow()
             return
         }
 
         view.addItemsAtTheEnd(searchModel.results)
+    }
+
+    override fun onFailureGetMoreItems() {
+        view.onFailureGettingMoreItems()
     }
 
     /**
@@ -78,4 +83,14 @@ class SearchPresenter(private val view: SearchView) {
             view.stopProgressBar()
         }
     }
+}
+
+interface SearchPresenterInterface {
+    fun onSuccessQuery(searchModel: SearchModel)
+
+    fun onSuccessGetMoreItems(searchModel: SearchModel)
+
+    fun onFailureQuery()
+
+    fun onFailureGetMoreItems()
 }

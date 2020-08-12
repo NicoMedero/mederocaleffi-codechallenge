@@ -6,6 +6,7 @@ import retrofit2.Response
 import mederocaleffi.nicolas.mobile.codechallenge.models.SearchModel
 import mederocaleffi.nicolas.mobile.codechallenge.repositories.SearchRepository
 import mederocaleffi.nicolas.mobile.codechallenge.services.SearchService
+import mederocaleffi.nicolas.mobile.codechallenge.views.search.SearchPresenterInterface
 
 /**
  * This repository implements the call for search items by name.
@@ -16,8 +17,7 @@ class DefaultSearchRepository : BaseRepository(), SearchRepository {
     override fun searchByName(
         query: String,
         offset: Int?,
-        onSuccess: (SearchModel) -> Unit?,
-        onFailure: () -> Unit?
+        presenter: SearchPresenterInterface
     ) {
         val service = retrofit.create(SearchService::class.java)
         val call = service.getItemsListByQuery(query, offset)
@@ -26,14 +26,30 @@ class DefaultSearchRepository : BaseRepository(), SearchRepository {
             override fun onResponse(call: Call<SearchModel>, response: Response<SearchModel>) {
                 if (response.code() == OK_HTTP && response.body() != null) {
                     val model = response.body() as SearchModel
-                    onSuccess.invoke(model)
+                    onSuccessByOffset(model, offset, presenter)
                 } else {
-                    onFailure.invoke()
+                    onFailureByOffset(offset, presenter)
                 }
             }
             override fun onFailure(call: Call<SearchModel>, t: Throwable) {
-                onFailure.invoke()
+                onFailureByOffset(offset, presenter)
             }
         })
+    }
+
+    private fun onSuccessByOffset(model: SearchModel, offset: Int?, presenter: SearchPresenterInterface) {
+        if (offset == 0 || offset == null) {
+            presenter.onSuccessQuery(model)
+        } else {
+            presenter.onSuccessGetMoreItems(model)
+        }
+    }
+
+    private fun onFailureByOffset(offset: Int?, presenter: SearchPresenterInterface) {
+        if (offset == 0 || offset == null) {
+            presenter.onFailureQuery()
+        } else {
+            presenter.onFailureGetMoreItems()
+        }
     }
 }

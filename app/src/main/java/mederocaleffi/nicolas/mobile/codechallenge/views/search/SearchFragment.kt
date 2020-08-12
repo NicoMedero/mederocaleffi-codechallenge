@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.search_fragment.*
 import mederocaleffi.nicolas.mobile.codechallenge.R
 import mederocaleffi.nicolas.mobile.codechallenge.models.ItemList
+import mederocaleffi.nicolas.mobile.codechallenge.repositories.impl.DefaultSearchRepository
 import mederocaleffi.nicolas.mobile.codechallenge.views.sharedCustomViews.CustomToolbarInterface
 
 class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
@@ -24,7 +25,7 @@ class SearchFragment : Fragment(), SearchView, CustomToolbarInterface {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        presenter = SearchPresenter(this)
+        presenter = SearchPresenter(this, DefaultSearchRepository())
     }
 
     override fun onCreateView(
