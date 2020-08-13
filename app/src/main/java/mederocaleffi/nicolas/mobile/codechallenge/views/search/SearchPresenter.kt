@@ -3,7 +3,6 @@ package mederocaleffi.nicolas.mobile.codechallenge.views.search
 import mederocaleffi.nicolas.mobile.codechallenge.models.ItemList
 import mederocaleffi.nicolas.mobile.codechallenge.models.SearchModel
 import mederocaleffi.nicolas.mobile.codechallenge.repositories.SearchRepository
-import mederocaleffi.nicolas.mobile.codechallenge.repositories.impl.DefaultSearchRepository
 
 class SearchPresenter(
     private val view: SearchView,

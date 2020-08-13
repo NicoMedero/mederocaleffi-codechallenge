@@ -5,4 +5,6 @@ data class Paging (
     val offset: Int,
     val limit: Int,
     val primaryResults: Int
-)
+) {
+    constructor(): this(0, 0, 0, 0)
+}
